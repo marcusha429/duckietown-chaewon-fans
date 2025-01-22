@@ -1,16 +1,16 @@
 ---
 layout: default
-title:  Team
+title:  Chaewon Fans
 ---
 
 # {{ page.title }}
 
 
-## USER 1
+## Martin Bobarshad
 ***UCI Net ID***: ucinetid1
 
-## USER 2
+## Joshua Inhyuk Choi
 ***UCI Net ID***: ucinetid2
 
-## USER 3
-***UCI Net ID***: ucinetid3
+## Marcus Ha
+***UCI Net ID***: nguyeh3
