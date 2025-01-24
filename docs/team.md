@@ -5,12 +5,13 @@ title:  Chaewon Fans
 
 # {{ page.title }}
 
+## Team Members
 
-## Martin Bobarshad
-***UCI Net ID***: bobarshm
+# Martin Bobarshad
+- **UCI Net ID**: `bobarshm`
 
-## Joshua Inhyuk Choi
-***UCI Net ID***: choiji2
+# Joshua Inhyuk Choi
+- **UCI Net ID**: `choiji2`
 
-## Marcus Ha
-***UCI Net ID***: nguyeh3
+# Marcus Ha
+- **UCI Net ID**: `nguyeh3`
