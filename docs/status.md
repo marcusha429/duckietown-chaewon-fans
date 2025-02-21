@@ -18,7 +18,7 @@ For SAC (not using Stable-Baselines3's SAC implementation), we use a **5-dimensi
 - `sin(θ), cos(θ)`: Direction of the DuckieBot.
 - `velocity`: Speed of the DuckieBot.
 
-![SAC Rewards](image/sac-reward.png)
+![SAC Rewards](image/sac-reward.png){: .uniform-img }
 
 The **2-dimensional action space** consists of:
 - **Velocity**: (-1 for reverse, 0 for stop, 1 for forward).
@@ -45,9 +45,10 @@ We assess performance using key metrics:
 - **Mean Episode Reward (`ep_rew_mean`)**: The average cumulative reward per episode. Currently, SAC's training results show poor performance, as the DuckieBot frequently veers off-lane and incurs penalties.
 - **Mean Episode Length (`ep_len_mean`)**: The average number of timesteps per episode. A decreasing trend suggests increased collisions, which shorten episode duration.
 - **Frames per Second (`fps`)**: The FPS rate is **<10**, which may hinder performance, particularly for CNN-based policies that rely on visual input.
-![SAC Rewards](image/sac-500.png)
-![SAC Rewards](image/sac-2000.png)
-![SAC Rewards](image/sac-3000.png)
+
+![SAC Rewards](image/sac-500.png){: .uniform-img }
+![SAC Rewards](image/sac-2000.png){: .uniform-img }
+![SAC Rewards](image/sac-3000.png){: .uniform-img }
 
 Due to these challenges, we plan to:
 - Train for **5000 to 1M episodes**.
@@ -58,9 +59,10 @@ Due to these challenges, we plan to:
 - We visually inspect the agent’s trajectory to assess lane adherence.
 - TensorBoard is used for logging and video recording.
 - A key challenge observed is **slow frame rates in HPC environments**, which impact training and evaluation speed.
-![SAC Rewards](image/ppo1.png)
-![SAC Rewards](image/ppo2.png)
-![SAC Rewards](image/ppo3.png)
+
+![SAC Rewards](image/ppo1.png){: .uniform-img }
+![SAC Rewards](image/ppo2.png){: .uniform-img }
+![SAC Rewards](image/ppo3.png){: .uniform-img }
 
 ## Remaining Goals and Challenges
 ### **Challenges**
