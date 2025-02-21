@@ -3,7 +3,9 @@ We’re bringing reinforcement learning to DuckieTown🦆 by training a duckiebo
 
 # Source Code Repository
 [Link to Source Code Repository](https://github.com/marcusha429/duckietown-chaewon-fans/tree/main)
-Provide a brief explanation of what it contains and how others can contribute.
+
+`ppo_project_code` directory: Holds all the main scripts and configurations for training and evaluating a reinforcement learning agent in the **Duckietown-loop_empty-v0** environment. Inside, you’ll find example training files, logs, and job submission scripts demonstrating how to run **Proximal Policy Optimization (PPO)** in a simple DuckieTown loop map—both headlessly or with rendering. It's a self-contained starting point for exploring RL in DuckieTown using PPO🚗!
+
 
 # Images and Screenshots
 Add relevant images or screenshots that showcase your project’s interface, functionality, or any visual elements of interest.
