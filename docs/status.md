@@ -42,10 +42,12 @@ Training is conducted for **100,000 timesteps**, utilizing a **vectorized enviro
 ## Evaluation
 ### **Quantitative Evaluation**
 We assess performance using key metrics:
-- **Mean Episode Reward (`ep_rew_mean`)**: The average cumulative reward per episode. Currently, SAC's training results show poor performance, as the DuckieBot frequently veers off-lane and incurs penalties.
+- **Mean Episode Reward (`ep_rew_mean`)**: The average cumulative reward per episode. Currently, SAC and PPO training results show poor performance, as the DuckieBot frequently veers off-lane and incurs penalties.
+![PPO rew mean](image/ep_rew_mean_ppo.png)
 - **Mean Episode Length (`ep_len_mean`)**: The average number of timesteps per episode. A decreasing trend suggests increased collisions, which shorten episode duration.
+![PPO len mean](image/ep_len_mean_ppo.png)
 - **Frames per Second (`fps`)**: The FPS rate is **<10**, which may hinder performance, particularly for CNN-based policies that rely on visual input.
-
+![PPO fps](image/ppo_fps.png)
 Due to these challenges, we plan to:
 - Train for **5000 to 1M episodes**.
 - Experiment with **different hyperparameters**.
