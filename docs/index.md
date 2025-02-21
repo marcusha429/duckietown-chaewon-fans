@@ -1,40 +1,19 @@
----
-layout: default
-title:  Home
----
+# Project Overview
+A short 2–3 sentence outline of your project, summarizing its purpose, goals, and key features.
 
-Source code: https://github.com/marcusha429/duckieTown-chaewon-fans
+# Source Code Repository
+[Link to Source Code Repository](https://github.com/marcusha429/duckietown-chaewon-fans/tree/main)
+Provide a brief explanation of what it contains and how others can contribute.
 
-Reports:
+# Images and Screenshots
+Add relevant images or screenshots that showcase your project’s interface, functionality, or any visual elements of interest.
 
-- [Proposal](proposal.html)
-- [Status](status.html)
-- [Final](final.html)
+# Relevant Online Resources
+- [Resource 1](#) - Description of how this resource was helpful.
+- [Resource 2](#) - Description of how this resource was helpful.
 
-What's Markdown (`.md`)?
+# Project Features and Highlights
+- Describe any notable features of your project, such as unique functionalities, technical challenges you overcame, or interesting aspects of your work.
 
-Markdown is markup that lets you write hypertext (HTML) documents
-in easy-to-read and easy-to-write plain text.
-No angle brackets `<></>` required for
-paragraphs, lists, blockquotes, tables, etc.
-
-
-This is a paragraph (in Markdown). Some more
-text here.
-
-This is another paragraph.
-
-This is a list:
-
-- Orange
-- Apple
-- Blueberry
-
-$$x^2 = y^2$$
-
-
-Just getting started with Markdown?
-See the [HTML <-> Markdown Quick Reference (Cheat Sheet)][quickref].
-
-
-[quickref]: https://github.com/mundimark/quickrefs/blob/master/HTML.md
+# Next Steps and Future Improvements
+Outline potential next steps for your project, such as future improvements, planned features, or areas you hope to work on going forward.
