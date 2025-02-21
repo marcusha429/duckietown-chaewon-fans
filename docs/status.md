@@ -1,4 +1,10 @@
-## Part 2: Technical Description
+---
+layout: default
+title: Status
+---
+# DuckieTown Project Status Update
+
+## Technical Description
 
 ## Project Summary
 We decided to work on the Duckietown project. The goal of our project is to develop an intelligent system for DuckieBot that enables self-navigation within the "Town" using reinforcement learning and machine learning. Our focus is on developing a simulation-based Duckietown environment and deploying a machine-learning-based solution to train the DuckieBot to detect lanes, follow them, recognize signals, stop when necessary, and avoid collisions with other objects such as walls, trees, and buses. Additionally, the system should respond effectively to environmental factors.
