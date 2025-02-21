@@ -1,5 +1,5 @@
 # Project Overview
-A short 2–3 sentence outline of your project, summarizing its purpose, goals, and key features.
+We’re bringing reinforcement learning to DuckieTown🦆 by training a duckiebot to navigate an ever-changing environment filled with stationary and moving obstacles🚧. Our purpose is to showcase how advanced RL algorithms—Proximal Policy Optimization (PPO) and Soft Actor-Critic (SAC)—thrive in continuous control tasks requiring pinpoint precision🎯. Our goals include applying theoretical RL in real-world scenarios, pushing the boundaries of safe and efficient deployment, and documenting each exhilarating step of our progress. Key features include dynamic obstacle avoidance, robust policy learning, and the potential for real-life domain transfer via Sim2Real⚡️ — so stay tuned for our journey that combines cutting-edge algorithms with practical, hands-on robotics!
 
 # Source Code Repository
 [Link to Source Code Repository](https://github.com/marcusha429/duckietown-chaewon-fans/tree/main)
