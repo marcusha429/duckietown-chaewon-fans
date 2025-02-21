@@ -1,0 +1,86 @@
+DEBUG:commons:version: 6.2.4 *
+DEBUG:typing:version: 6.2.3
+DEBUG:duckietown_world:duckietown-world version 6.4.3 path /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages
+DEBUG:geometry:PyGeometry-z6 version 2.1.5 path /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages
+DEBUG:aido_schemas:aido-protocols version 6.1.1 path /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages
+DEBUG:nodes:version 6.2.17 path /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages pyparsing 3.2.1
+DEBUG:gym-duckietown:gym-duckietown version 6.1.34 path /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages
+
+2025-02-21 01:36:39.748700: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+INFO:duckietown_world: data: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/maps/loop_empty.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:loading mesh 'duckiebot' from file_path '/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/duckiebot/duckiebot.obj'
+DEBUG:gym-duckietown:loading materials from /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/duckiebot/duckiebot.mtl
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/duckiebot/circlegrid-square.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/duckie/duckie.png
+DEBUG:gym-duckietown:loading mesh 'duckie' from file_path '/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/duckie/duckie.obj'
+DEBUG:gym-duckietown:loading mesh 'cone' from file_path '/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/cone/cone.obj'
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/meshes/cone/cone.png
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/floor/texture.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/curve_left/texture.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/straight/texture.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/curve_right/texture.jpg
+INFO:gym-duckietown:Starting at [0.77617413 0.         2.94733618] 5.02264763719741
+INFO:gym-duckietown:using DuckietownEnv
+/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/gym/spaces/box.py:127: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  logger.warn(f"Box bound precision lowered by casting to {self.dtype}")
+{'audio': ('xaudio2', 'directsound', 'openal', 'pulse', 'silent'), 'debug_font': False, 'debug_gl': True, 'debug_gl_trace': False, 'debug_gl_trace_args': False, 'debug_graphics_batch': False, 'debug_lib': False, 'debug_media': False, 'debug_texture': False, 'debug_trace': False, 'debug_trace_args': False, 'debug_trace_depth': 1, 'debug_trace_flush': True, 'debug_win32': False, 'debug_x11': False, 'graphics_vbo': True, 'shadow_window': True, 'vsync': None, 'xsync': True, 'xlib_fullscreen_override_redirect': False, 'darwin_cocoa': True, 'search_local_libs': True, 'advanced_font_features': False, 'headless': False, 'headless_device': 0, 'win32_disable_shaping': False}
+Traceback (most recent call last):
+  File "/data/class/cs175/nguyeh3/duckietown-chaewon-fans/ppo_project_code/ducky_project.py", line 58, in <module>
+    env = make_vec_env(lambda: make_env(), n_envs=8) # increased n_envs cux of low frame rate
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/stable_baselines3/common/env_util.py", line 125, in make_vec_env
+    vec_env = vec_env_cls([make_env(i + start_index) for i in range(n_envs)], **vec_env_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/stable_baselines3/common/vec_env/dummy_vec_env.py", line 30, in __init__
+    self.envs = [_patch_env(fn()) for fn in env_fns]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/stable_baselines3/common/vec_env/dummy_vec_env.py", line 30, in <listcomp>
+    self.envs = [_patch_env(fn()) for fn in env_fns]
+                            ^^^^
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/stable_baselines3/common/env_util.py", line 100, in _init
+    env = _patch_env(env)
+          ^^^^^^^^^^^^^^^
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/stable_baselines3/common/vec_env/patch_gym.py", line 40, in _patch_env
+    import shimmy
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/shimmy/__init__.py", line 11, in <module>
+    register_gymnasium_envs()
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/shimmy/registration.py", line 180, in register_gymnasium_envs
+    _register_dm_control_envs()
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/shimmy/registration.py", line 60, in _register_dm_control_envs
+    from shimmy.dm_control_compatibility import DmControlCompatibilityV0
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/shimmy/dm_control_compatibility.py", line 16, in <module>
+    from dm_control import composer
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/composer/__init__.py", line 18, in <module>
+    from dm_control.composer.arena import Arena
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/composer/arena.py", line 20, in <module>
+    from dm_control import mjcf
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/mjcf/__init__.py", line 18, in <module>
+    from dm_control.mjcf.attribute import Asset
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/mjcf/attribute.py", line 28, in <module>
+    from dm_control.mujoco.wrapper import util
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/mujoco/__init__.py", line 18, in <module>
+    from dm_control.mujoco.engine import action_spec
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/mujoco/engine.py", line 41, in <module>
+    from dm_control import _render
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/_render/__init__.py", line 86, in <module>
+    Renderer = import_func()
+               ^^^^^^^^^^^^^
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/_render/__init__.py", line 36, in _import_egl
+    from dm_control._render.pyopengl.egl_renderer import EGLContext
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/_render/pyopengl/egl_renderer.py", line 39, in <module>
+    from dm_control._render.pyopengl import egl_ext as EGL
+  File "/data/class/cs175/nguyeh3/.conda/envs/rl/lib/python3.11/site-packages/dm_control/_render/pyopengl/egl_ext.py", line 37, in <module>
+    ctypes.POINTER(EGL.EGLDeviceEXT),
+                   ^^^^^^^^^^^^^^^^
+AttributeError: module 'OpenGL.EGL' has no attribute 'EGLDeviceEXT'
