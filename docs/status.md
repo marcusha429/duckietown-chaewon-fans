@@ -18,7 +18,7 @@ For SAC (not using Stable-Baselines3's SAC implementation), we use a **5-dimensi
 - `sin(θ), cos(θ)`: Direction of the DuckieBot.
 - `velocity`: Speed of the DuckieBot.
 
-![SAC Rewards](images/sac-reward.png)
+![SAC Rewards](image/sac-reward.png)
 
 The **2-dimensional action space** consists of:
 - **Velocity**: (-1 for reverse, 0 for stop, 1 for forward).
