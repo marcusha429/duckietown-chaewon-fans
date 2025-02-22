@@ -24,6 +24,7 @@ title: Chaewon Fans
 ## Marcus Ha
 
 - **UCI Net ID**: `nguyeh3`
+
   Marcus is a fourth year computer science major, specializing in intelligent systems. Besides AI related field, he is also interested in building Website and Mobile App. He loves math. For him, Math is a key to solve all problems in CS.
   
     **Links**:
