@@ -38,9 +38,6 @@ We’re bringing reinforcement learning to DuckieTown🦆 by training a duckiebo
 - StackOverflow discussions for Mac virtualization troubleshooting
 - Private cloud-based HPC3 nad SLURM job scheduler for training
 
-# Project Features and Highlights
-- Describe any notable features of your project, such as unique functionalities, technical challenges you overcame, or interesting aspects of your work.
-
 # Next Steps and Future Improvements
 The next steps involve using a Linux laptop for training and testing the models, making sure to have display support. One key focus will be optimizing the hyperparameters of the PPO algorithm to get better performance from the model. To make the setup easier, we can use pre-built reward functions for Duckietown. In the early stages of training, it’s important to run some sanity checks with the simulation to make sure everything is on track. Adding model checkpointing callbacks will help save progress along the way. Looking ahead, we’ll need to build a solid machine learning pipeline that covers training, evaluation, and deployment. Finally, fine-tuning hyperparameters like the learning rate and batch size will be essential for improving the agent’s performance.
 
