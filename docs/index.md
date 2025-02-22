@@ -9,9 +9,15 @@ We’re bringing reinforcement learning to DuckieTown🦆 by training a duckiebo
 `sac_project_code` directory: Holds the scripts and configurations for training and evaluating a duckiebot agent using **Soft Actor-Critic (SAC)** in the **Duckietown-loop_empty** map🛣. It includes the main training script **`bs3sac.py`**, environment setup in **`env/duckietown_env.py`**, and core SAC components like the agent (**`sac/agent.py`**), neural network architectures (**`sac/networks.py`**), and replay buffer (**`sac/replay_buffer.py`**). Additionally, **`manual_control.py`** allows for manual robot control, and **`requirements.txt`** lists all the necessary Python dependencies. This project provides a structured framework to experiment with SAC for RL in Duckietown 🚗💡.
 
 
-# Images and Screenshots
+# Visuals
 ![Duckiebot spinning around itself in a basic looping map](gifs/spinning.gif)
+
+Visual of a Duckiebot spinning around itself in circles in the loop_empty map
+
+
 ![Simple navigation demo in Duckietown's environment in a map with stationary and moving obstacles](gifs/navigation_demo.gif)
+
+Simple demo of the Duckiebot navigating a map with stationary and moving obstacles!
 
 # Relevant Online Resources
 ### Libraries:
