@@ -1,0 +1,19 @@
+duckietown-gym-daffy==6.2.0
+gym==0.26.2
+torch==2.6.0
+numpy==1.20.0   #be careful - different version than PPO code
+matplotlib==3.7.5
+
+duckietown-world-daffy==6.4.3
+PyGeometry-z6==2.1.5
+aido-protocols-daffy==6.1.1
+zuper-nodes-z6==6.2.17
+
+
+tensorboard==2.19.0
+pyglet==1.5.11
+cloudpickle==3.1.1
+pillow==11.1.0
+
+
+opencv-python>=4.11.0.86
