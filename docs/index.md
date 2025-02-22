@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# Welcome to Our Duckietown Project 🚗💨  
+# Welcome to Our Duckietown Project: LaneQuacker 🚗💨  
 
 This project focuses on developing an intelligent **self-driving DuckieBot** using **reinforcement learning**. Our goal is to train a DuckieBot to navigate autonomously within a simulated town, recognizing lanes, signals, and avoiding collisions using **PPO (Proximal Policy Optimization) and SAC (Soft Actor-Critic)**.
 
