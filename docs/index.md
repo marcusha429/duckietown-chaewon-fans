@@ -1,40 +1,18 @@
 ---
 layout: default
-title:  Home
+title: Home
 ---
 
-Source code: https://github.com/marcusha429/duckieTown-chaewon-fans
+# Welcome to Our Duckietown Project 🚗💨  
 
-Reports:
+This project focuses on developing an intelligent **self-driving DuckieBot** using **reinforcement learning**. Our goal is to train a DuckieBot to navigate autonomously within a simulated town, recognizing lanes, signals, and avoiding collisions using **PPO (Proximal Policy Optimization) and SAC (Soft Actor-Critic)**.
 
-- [Proposal](proposal.html)
-- [Status](status.html)
-- [Final](final.html)
+### 🔗 Project Repository  
+[Source Code on GitHub](https://github.com/marcusha429/duckieTown-chaewon-fans)
 
-What's Markdown (`.md`)?
+### 📑 Project Reports  
+- 📜 [Proposal](proposal.html) – Initial plan and objectives  
+- 📊 [Status](status.html) – Progress updates and evaluations  
+- 🏁 [Final](final.html) – Final results and findings  
 
-Markdown is markup that lets you write hypertext (HTML) documents
-in easy-to-read and easy-to-write plain text.
-No angle brackets `<></>` required for
-paragraphs, lists, blockquotes, tables, etc.
-
-
-This is a paragraph (in Markdown). Some more
-text here.
-
-This is another paragraph.
-
-This is a list:
-
-- Orange
-- Apple
-- Blueberry
-
-$$x^2 = y^2$$
-
-
-Just getting started with Markdown?
-See the [HTML <-> Markdown Quick Reference (Cheat Sheet)][quickref].
-
-
-[quickref]: https://github.com/mundimark/quickrefs/blob/master/HTML.md
+Stay tuned as we continue improving our DuckieBot’s performance! 🚀
