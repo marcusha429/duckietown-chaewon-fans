@@ -2,6 +2,9 @@
 layout: default
 title: Status
 ---
+
+Link to video summary of project's progress and stories of our successes, challenges, and future works can be found [here](https://www.youtube.com/).
+
 # DuckieTown Project Status 
 
 ## Project Summary
