@@ -9,10 +9,11 @@ from stable_baselines3.common.evaluation import evaluate_policy
 
 # Import the custom wrapper for Duckietown
 from gym_duckietown.simulator import Simulator
-from wrappers import DuckietownGymnasiumWrapper, TransposeImage
+from utils.custom import DuckietownGymnasiumWrapper
+from utils.dt import MotionBlurWrapper, NormalizeWrapper, ImgWrapper, DtRewardWrapper, ActionWrapper
 from gym_duckietown.wrappers import *
 
-# Create the environment
+# Create the environment and apply wrappers
 def make_env():
     simulator_kwargs = {
         "seed": 123,
@@ -24,26 +25,44 @@ def make_env():
         "accept_start_angle_deg": 4,
         "full_transparency": True,
     }
+    # Create Duckietown environment
     env = Simulator(**simulator_kwargs)
-    # env = DiscreteWrapper(env=env)
-    # env = PyTorchObsWrapper(env)
-    env = TransposeImage(env)
+    print("Initialized environment")
+
+    # Apply Duckietown wrappers
+    # env = ResizeWrapper(env)
+    # env = NormalizeWrapper(env)
+    env = ImgWrapper(env)
+    env = ActionWrapper(env)
+    env = DtRewardWrapper(env)
+    print("Initialized Duckietown wrappers")
+
+    # Apply Gymnasium wrapper
     env = DuckietownGymnasiumWrapper(env)
+    print("Applied Gymnasium wrapper")
+
     return env
 
-# Stable-Baselines3 requires vectorized environments
+# Vectorize environment/s
 env = DummyVecEnv([make_env])
 
-print(f"Observation space: {env.observation_space}")
-print(f"Action Space: {env.action_space}")
+# Print spaces
+print(f"Observation space:\t: {env.observation_space}")
+print(f"Action Space:\t\t {env.action_space}")
 
 # Create PPO model
 model = PPO(
     "CnnPolicy",
     env,
+    policy_kwargs={"normalize_images": False},
     verbose=1,
     tensorboard_log="./ppo_duckietown_tensorboard/"
 )
+
+# Print spaces
+print(f"Observation space:\t: {env.observation_space}")
+print(f"Action Space:\t\t {env.action_space}")
+
 
 # # Train the agent
 # TIMESTEPS = 1
