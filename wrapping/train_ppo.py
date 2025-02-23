@@ -1,11 +1,9 @@
 import pyglet
 window = pyglet.window.Window(visible=False)
 
-import gymnasium as gym
 import numpy as np
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv
-from stable_baselines3.common.evaluation import evaluate_policy
 
 # Import the custom wrapper for Duckietown
 from gym_duckietown.simulator import Simulator
@@ -14,35 +12,8 @@ from stable_baselines3.common.vec_env import VecTransposeImage
 from utils.env import make_env
 from gym_duckietown.wrappers import *
 
+# Prepare the environment
 env = make_env() 
-
-# Test step BEFORE DummyVecEnv
-action = env.action_space.sample()
-action = np.array(action, dtype=np.float32)
-print("Action shape before step:", action.shape)
-obs, reward, terminated, truncated, info = env.step(action)
-
-# Apply DummyVecEnv (after verifying base env works)
-env = VecTransposeImage(DummyVecEnv([make_env]))
-
-# Sample action
-action = np.array(env.action_space.sample(), dtype=np.float32).reshape(1, -1)
-
-# Print action shape to verify
-print("Action shape before step:", action.shape)  # Should print (1,2)
-
-# Fix unpacking issue
-step_result = env.step(action)
-
-if len(step_result) == 4:
-    obs, reward, done, info = step_result
-    truncated = False  # Add missing value
-else:
-    obs, reward, done, truncated, info = step_result
-
-print("Final step output:", obs.shape, reward, done, truncated, info)
-
-# Apply DummyVecEnv (after verifying base env works)
 env = VecTransposeImage(DummyVecEnv([make_env]))
 
 # Create PPO model
@@ -54,7 +25,6 @@ model = PPO(
     tensorboard_log="./ppo_duckietown_tensorboard/",
     device="mps"
 )
-
 
 # Train the agent
 TIMESTEPS = 1
