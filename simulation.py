@@ -1,36 +1,56 @@
+import random
 import pyglet
-window = pyglet.window.Window(visible=True)
+window = pyglet.window.Window(visible=False)
 
 import numpy as np
 from gym_duckietown.simulator import Simulator
 
-# Create the environment
-env = Simulator(
-    seed=123, # random seed
-    map_name="loop_empty",
-    max_steps=500001, # we don't want the gym to reset itself
-    domain_rand=0,
-    camera_width=640,
-    camera_height=480,
-    accept_start_angle_deg=4, # start close to straight
-    full_transparency=True,
-    distortion=True,
-)   
+# List of maps
+maps = [
+    "4way",
+    "loop_dyn_duckiebots",
+    "loop_empty",
+    "loop_obstacles",
+    "loop_pedestrians",
+    "regress_4way_adam",
+    "regress_4way_drivable",
+    "small_loop",
+    "small_loop_cw",
+    "straight_road",
+    "udem1",
+    "zigzag_dists"
+]
 
-# Render the environment
-while True:
-    # Consistently move forward
-    action = np.array(object=[0.1, 0.1], dtype=np.float32)
+for map in maps:
+    # Create the environment
+    env = Simulator(
+        seed=3,
+        map_name=map,
+        domain_rand=0,
+        camera_width=640,
+        camera_height=480,
+        full_transparency=True,
+        accept_start_angle_deg=20
+    )
 
-    observation, reward, done, misc = env.step(action)
+    # Determine which mode to render at random
+    render_human = random.choice([True, False])
 
-    env.render(mode="human") # To render graphics
-    # env.render(mode="rgb_array") # To get an image back and train headless
-    # env.render(mode="top_down") # To render top-down view graphics
-    # env.render(mode="free_cam") # Same as human to some extent
+    # Render the environment
+    for i in range(100):
+        # Spin around in place
+        action = np.array(object=[0, 0.2], dtype=np.float32)
 
-    if done:
-        env.reset()
+        # Perform an step in the environment
+        observation, reward, done, misc = env.step(action)
+
+        # Render simulation
+        if render_human:
+            env.render(mode="human")
+        else:
+            env.render(mode="top_down")
+
+        if done:
+            env.reset()
     
-    # Run pyglet app to ensure rendering works
-    # pyglet.app.run()
+    env.window.close()

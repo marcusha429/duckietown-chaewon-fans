@@ -2,22 +2,20 @@
 
 Welcome to the **Duckietown Gymnasium** – a modular, clean, and cutting-edge training setup designed for reinforcement learning in Duckietown! Whether you're experimenting with legacy algorithms or leveraging the latest stable baselines, this platform is built to help you iterate rapidly and push the boundaries of your RL experiments. Get ready for a playful dive into the world of duck-powered learning! 😎
 
+
+![A duckiebot spinning in the duckietown environment](docs/gifs/spinning_duckiebot.gif)
 ---
 
 ## Getting Started
 
 ### Environment Setup 🐍
-Start by creating a dedicated Conda environment to keep your dependencies organized and conflict-free. For example, you can run:
-
     conda create -n duckietown_env python=3.10
     conda activate duckietown_env
-
-Next, install all required Python packages using pip. For a faster installation experience, we recommend using the Chinese University mirror:
 
     pip install --upgrade pip
     pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/ --use-feature=fast-deps
 
-*Pro tip: Our setup uses optimized dependency resolution ("fast deps") to get you up and running in no time!*
+*Pro tip: Our setup uses optimized dependency resolution ("fast deps"), and Chinese mirrors of PyPI servers to get you up and running in no time!*
 
 ---
 
