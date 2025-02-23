@@ -1,7 +1,12 @@
 # General libraries
 duckietown-gym-daffy
 stable-baselines3
+tensorflow
 
-# Specific libraries
-#pyglet==1.5.27
-#numpy==1.23.5
+# Override specific libraries
+pyglet==1.5.27
+numpy==1.23.5
+
+
+# New instructions
+# conda create -n duckietown python=3.10

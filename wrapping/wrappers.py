@@ -12,6 +12,10 @@ def convert_space(space):
     """
     Convert an old gym space to a gymnasium space.
     """
+    # No need to convert a new gymnasium space
+    if type(space).__module__.startswith("gymnasium"):
+        return space
+    
     if isinstance(space, old_gym.spaces.Box):
         return Box(low=space.low, high=space.high, shape=space.shape, dtype=space.dtype)
     elif isinstance(space, old_gym.spaces.Discrete):
@@ -85,7 +89,13 @@ class DuckietownGymnasiumWrapper(gym.Env):
         Returns:
             A tuple (observation, info)
         """
-        observation = self.env.reset()
+        # Attempt to bypass intermediate wrappers by calling unwrapped.reset()
+        try:
+            observation = self.env.unwrapped.reset()
+        except AttributeError:
+            # Fallback if unwrapped isn’t available
+            observation = self.env.reset()
+        
         return observation, {}
     
     def render(self):
@@ -129,3 +139,23 @@ if __name__ == "__main__":
     obs = env.reset()
     action = np.array([0.1, 0.1], dtype=np.float64)
     obs, reward, terminated, truncated, info = env.step(action)
+
+
+class TransposeImage(old_gym.ObservationWrapper):
+    def __init__(self, env):
+        super().__init__(env)
+        # Original shape: (H, W, C)
+        obs_shape = self.observation_space.shape
+        # New shape: (C, H, W)
+        new_shape = (obs_shape[2], obs_shape[0], obs_shape[1])
+        # Transpose the low and high bounds as well
+        self.observation_space = Box(
+            low=self.observation_space.low.transpose(2, 0, 1),
+            high=self.observation_space.high.transpose(2, 0, 1),
+            shape=new_shape,
+            dtype=np.float32
+        )
+        
+    def observation(self, observation):
+        # Transpose observation from (H, W, C) to (C, H, W)
+        return observation.transpose(2, 0, 1)
