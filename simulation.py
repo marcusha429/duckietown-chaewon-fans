@@ -21,7 +21,7 @@ env = Simulator(
         distortion=True,
     )   
 while True:
-    action = np.array([0.1, 0.1], dtype=np.float64)
+    action = np.array(object=[0.1, 0.1], dtype=np.float64)
 
     observation, reward, done, misc = env.step(action)
 

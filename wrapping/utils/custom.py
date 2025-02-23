@@ -45,26 +45,6 @@ class DuckietownGymnasiumWrapper(gym.Env):
         """
         super().__init__()
         self.env = env
-
-        # METHOD 1: REMOVE THE compute reward method of the underlying simulator class entirely
-        # # # Rename compute_reward to avoid confusion with goal-conditioned envs
-        # # if hasattr(self.env, 'compute_reward'):
-        # #     self.env.calculate_reward = self.env.compute_reward
-        # #     del self.env.compute_reward
-
-        # # Rename compute_reward to avoid confusion with goal-conditioned envs
-        # if hasattr(self.env.__class__, "compute_reward"):
-        #     self.env.__class__.calculate_reward = self.env.__class__.compute_reward
-        #     delattr(self.env.__class__, "compute_reward")  # Remove from class, not instance
-
-        # # Method 2:
-        # # Rename compute_reward to avoid confusion with goal-conditioned envs
-        # if hasattr(self.env, "compute_reward"):
-        #     self._original_compute_reward = self.env.compute_reward  # Keep a reference
-        #     setattr(self.env, "calculate_reward", self._original_compute_reward)  # Store it under a new name
-
-        #     # Override compute_reward to prevent `check_env()` from treating it as goal-conditioned
-        #     self.env.compute_reward = lambda *args, **kwargs: print("compute_reward() is overridden and unused in this context.")
         
         # Convert spaces from old Gym to Gymnasium
         self.action_space = convert_space(self.env.action_space)
@@ -77,9 +57,18 @@ class DuckietownGymnasiumWrapper(gym.Env):
         Adapts the original Gym API (observation, reward, done, info) to the
         Gymnasium API: (observation, reward, terminated, truncated, info).
         """
-        observation, reward, done, info = self.env.step(action)
-        terminated = done    # Use the original 'done' as 'terminated'
-        truncated = False    # No explicit truncation logic provided
+        # terminated = done  # Standard Gym-to-Gymnasium conversion
+        # return observation, reward, terminated, truncated, info
+        step_result = self.env.step(action)
+
+        # If the environment returns only 4 values, add `truncated=False`
+        if len(step_result) == 4:
+            observation, reward, done, info = step_result
+            truncated = False  # Gymnasium requires a `truncated` value
+        else:
+            raise ValueError(f"Unexpected step return value length: {len(step_result)}")
+
+        terminated = done  # Rename `done` to `terminated` for Gymnasium compatibility
         return observation, reward, terminated, truncated, info
     
     def reset(self, *, seed=None, options=None):
@@ -125,7 +114,7 @@ if __name__ == "__main__":
 
     # First create the base Duckietown simulator
     env = Simulator(
-        seed=123,
+        seed=0,
         map_name="loop_empty"
     )
 
@@ -135,7 +124,7 @@ if __name__ == "__main__":
     # Check if the wrapped environment meets Gymnasium specifications
     check_env(env, warn=False, skip_render_check=True)
 
-    # Optional: Test basic functionality
-    obs = env.reset()
-    action = np.array([0.1, 0.1], dtype=np.float64)
-    obs, reward, terminated, truncated, info = env.step(action)
+    # # Optional: Test basic functionality
+    # obs = env.reset()
+    # action = np.array([0.1, 0.1], dtype=np.float64)
+    # obs, reward, terminated, truncated, info = env.step(action)

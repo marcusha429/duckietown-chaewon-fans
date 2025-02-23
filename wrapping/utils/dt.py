@@ -69,20 +69,35 @@ class NormalizeWrapper(old_gym.ObservationWrapper):
             return (obs - self.obs_lo) / (self.obs_hi - self.obs_lo)
 
 
+# class ImgWrapper(old_gym.ObservationWrapper):
+#     def __init__(self, env=None):
+#         super(ImgWrapper, self).__init__(env)
+#         obs_shape = self.observation_space.shape
+#         self.observation_space = spaces.Box(
+#             self.observation_space.low[0, 0, 0],
+#             self.observation_space.high[0, 0, 0],
+#             [obs_shape[2], obs_shape[0], obs_shape[1]],
+#             dtype=self.observation_space.dtype,
+#         )
+
+#     def observation(self, observation):
+#         return observation.transpose(2, 0, 1)
+
 class ImgWrapper(old_gym.ObservationWrapper):
-    def __init__(self, env=None):
-        super(ImgWrapper, self).__init__(env)
-        obs_shape = self.observation_space.shape
+    def __init__(self, env):
+        super().__init__(env)
+        obs_shape = self.observation_space.shape  # (H, W, C)
+
+        # Correctly define observation space (C, H, W)
         self.observation_space = spaces.Box(
-            self.observation_space.low[0, 0, 0],
-            self.observation_space.high[0, 0, 0],
-            [obs_shape[2], obs_shape[0], obs_shape[1]],
+            low=self.observation_space.low.min(),   # Use min value from Box
+            high=self.observation_space.high.max(), # Use max value from Box
+            shape=(obs_shape[2], obs_shape[0], obs_shape[1]),  # Convert (H, W, C) → (C, H, W)
             dtype=self.observation_space.dtype,
         )
 
     def observation(self, observation):
-        return observation.transpose(2, 0, 1)
-
+        return np.transpose(observation, (2, 0, 1))  # Convert (H, W, C) → (C, H, W)
 
 class DtRewardWrapper(old_gym.RewardWrapper):
     def __init__(self, env):
