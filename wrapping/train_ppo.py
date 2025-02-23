@@ -16,31 +16,31 @@ from gym_duckietown.wrappers import *
 
 env = make_env() 
 
-# # Test step BEFORE DummyVecEnv
-# action = env.action_space.sample()
-# action = np.array(action, dtype=np.float32)
-# print("Action shape before step:", action.shape)
-# obs, reward, terminated, truncated, info = env.step(action)
+# Test step BEFORE DummyVecEnv
+action = env.action_space.sample()
+action = np.array(action, dtype=np.float32)
+print("Action shape before step:", action.shape)
+obs, reward, terminated, truncated, info = env.step(action)
 
-# # Apply DummyVecEnv (after verifying base env works)
-# env = VecTransposeImage(DummyVecEnv([make_env]))
+# Apply DummyVecEnv (after verifying base env works)
+env = VecTransposeImage(DummyVecEnv([make_env]))
 
-# # Sample action
-# action = np.array(env.action_space.sample(), dtype=np.float32).reshape(1, -1)
+# Sample action
+action = np.array(env.action_space.sample(), dtype=np.float32).reshape(1, -1)
 
-# # Print action shape to verify
-# print("Action shape before step:", action.shape)  # Should print (1,2)
+# Print action shape to verify
+print("Action shape before step:", action.shape)  # Should print (1,2)
 
-# # Fix unpacking issue
-# step_result = env.step(action)
+# Fix unpacking issue
+step_result = env.step(action)
 
-# if len(step_result) == 4:
-#     obs, reward, done, info = step_result
-#     truncated = False  # Add missing value
-# else:
-#     obs, reward, done, truncated, info = step_result
+if len(step_result) == 4:
+    obs, reward, done, info = step_result
+    truncated = False  # Add missing value
+else:
+    obs, reward, done, truncated, info = step_result
 
-# print("Final step output:", obs.shape, reward, done, truncated, info)
+print("Final step output:", obs.shape, reward, done, truncated, info)
 
 # Apply DummyVecEnv (after verifying base env works)
 env = VecTransposeImage(DummyVecEnv([make_env]))
