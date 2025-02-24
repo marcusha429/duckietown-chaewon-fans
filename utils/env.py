@@ -28,7 +28,7 @@ def make_raw_env():
 # Create the environment and apply wrappers
 def make_gym_env() -> VecEnv:
     # Make a raw environment
-    env = create_raw_env()
+    env = make_raw_env()
 
     # Apply Duckietown wrappers
     # env = ResizeWrapper(env)
