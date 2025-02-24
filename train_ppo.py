@@ -32,7 +32,7 @@ class Trainer:
         """
         random_seed = self.config.get("RANDOM_SEED", 47)
         tensorboard_log = self.config.get("tensorboard_log", "./ppo_tensorboard_log/")
-        device = self.config.get("device", "mps")
+        device = self.config.get("device", "cpu")
 
         model = PPO(
             policy="CnnPolicy",
@@ -53,10 +53,10 @@ class Trainer:
         """
         total_timesteps = self.config.get("timesteps", 100)
         model_name = self.config.get("model_name", "ppo_duckietown_model")
-        tb_log_name = f"{total_timesteps}_timesteps"
+        tb_log_name = model_name
         save_freq = self.config.get("save_freq", 1000)
 
-        # Save a checkpoint every 1000 steps
+        # Save a checkpoint periodically
         checkpoint_callback = CheckpointCallback(
             save_freq=save_freq,
             save_path="./model_artifacts/",
@@ -66,7 +66,12 @@ class Trainer:
         )
     
         # Begin training.
-        self.model.learn(total_timesteps=total_timesteps, tb_log_name=tb_log_name, callback=[checkpoint_callback])
+        self.model.learn(
+            total_timesteps=total_timesteps,
+            tb_log_name=tb_log_name,
+            callback=[checkpoint_callback],
+            reset_num_timesteps=False
+        )
 
         # After training, save the final model (this will override any previous save).
         self.model.save(f"./model_artifacts/{model_name}")
