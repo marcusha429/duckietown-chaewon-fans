@@ -1,63 +1,95 @@
+#!/usr/bin/env python3
+
+import argparse
+import yaml
 import pyglet
+
+# Hide the pyglet window
 window = pyglet.window.Window(visible=False)
 
 from stable_baselines3 import PPO
-from stable_baselines3.common.evaluation import evaluate_policy
-from stable_baselines3.common.env_util import make_vec_env
-from utils.env import make_env
-# from gym_duckietown.wrappers import *
+from stable_baselines3.common.callbacks import BaseCallback
+from stable_baselines3.common.callbacks import CheckpointCallback
+from utils.env import make_envs
 
-RANDOM_SEED = 47
+class Trainer:
+    def __init__(self, config: dict):
+        self.config = config
+        self.env = self.create_env()
+        self.model = self.create_model()
 
-import torch
-torch.set_num_threads(10)
+    def create_env(self):
+        """
+        Create and return the vectorized environment/s.
+        """
+        n_envs = self.config.get("n_envs", 4)
+        env = make_envs(n_envs=n_envs)
+        return env
 
-# Prepare the environment
-# env = make_env() 
-# env = VecTransposeImage(DummyVecEnv([make_env]))
+    def create_model(self):
+        """
+        Create the PPO model using CnnPolicy with parameters from the config.
+        """
+        random_seed = self.config.get("RANDOM_SEED", 47)
+        tensorboard_log = self.config.get("tensorboard_log", "./ppo_tensorboard_log/")
+        device = self.config.get("device", "mps")
 
-# Vectorized environment setup
-env = make_vec_env(
-    env_id=lambda: make_env(),
-    n_envs=4,
-    seed=RANDOM_SEED
-)
+        model = PPO(
+            policy="CnnPolicy",
+            env=self.env,
+            policy_kwargs={"normalize_images": False},
+            verbose=1,
+            tensorboard_log=tensorboard_log,
+            seed=random_seed,
+            device=device
+        )
+        return model
 
-# Create PPO model
-model = PPO(
-    policy="CnnPolicy",
-    env=env,
-    policy_kwargs={"normalize_images": False},
-    verbose=1,
-    tensorboard_log="./ppo_tensorboard_log/",
-    seed=RANDOM_SEED,
-    device="mps"
-)
+    def train(self):
+        """
+        Train the model using parameters from the config.
+        Uses a custom callback to periodically save the full model,
+        overwriting the previous saved file.
+        """
+        total_timesteps = self.config.get("timesteps", 100)
+        model_name = self.config.get("model_name", "ppo_duckietown_model")
+        tb_log_name = f"{total_timesteps}_timesteps"
+        save_freq = self.config.get("save_freq", 1000)
 
-# Train the agent
-model.learn(
-    total_timesteps=50,
-    tb_log_name="var_2"
-)
+        # Save a checkpoint every 1000 steps
+        checkpoint_callback = CheckpointCallback(
+            save_freq=save_freq,
+            save_path="./model_artifacts/",
+            name_prefix=model_name,
+            save_replay_buffer=True,
+            save_vecnormalize=True,
+        )
+    
+        # Begin training.
+        self.model.learn(total_timesteps=total_timesteps, tb_log_name=tb_log_name, callback=[checkpoint_callback])
 
-# Save the trained model
-model.save(
-    "ppo_duckietown_model_2")
+        # After training, save the final model (this will override any previous save).
+        self.model.save(f"./model_artifacts/{model_name}")
 
-# # Evaluate the trained policy
-# mean_reward, std_reward = evaluate_policy(model, env, n_eval_episodes=10)
-# print(f"Mean reward: {mean_reward} ± {std_reward}")
 
-# # Load the trained model
-# model = PPO.load("ppo_duckietown_model")
+def parse_args():
+    parser = argparse.ArgumentParser(description="Train a PPO agent on Duckietown")
+    parser.add_argument("--config", type=str, required=True, help="Path to YAML config file")
+    return parser.parse_args()
 
-# # Test the trained agent
-# obs = env.reset()
-# for _ in range(2000):
-#     action, _states = model.predict(obs)
-#     obs, reward, done, truncated, info = env.step(action)
-#     env.render(mode="human")
-#     if done:
-#         obs = env.reset()
 
-# env.close()
+def load_config(config_path: str) -> dict:
+    with open(config_path, "r") as f:
+        config = yaml.safe_load(f)
+    return config
+
+
+def main():
+    args = parse_args()
+    config = load_config(args.config)
+    trainer = Trainer(config)
+    trainer.train()
+
+
+if __name__ == "__main__":
+    main()
