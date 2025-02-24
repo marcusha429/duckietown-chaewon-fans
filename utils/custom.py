@@ -106,24 +106,3 @@ class DuckietownGymnasiumWrapper(gym.Env):
         Return the base (unwrapped) simulator.
         """
         return self.env
-
-if __name__ == "__main__":
-    from stable_baselines3.common.env_checker import check_env
-    from gym_duckietown.simulator import Simulator
-
-    # First create the base Duckietown simulator
-    env = Simulator(
-        seed=0,
-        map_name="loop_empty"
-    )
-
-    # Now wrap it with our Gymnasium wrapper
-    env = DuckietownGymnasiumWrapper(env=env)
-
-    # Check if the wrapped environment meets Gymnasium specifications
-    check_env(env, warn=False, skip_render_check=True)
-
-    # # Optional: Test basic functionality
-    # obs = env.reset()
-    # action = np.array([0.1, 0.1], dtype=np.float64)
-    # obs, reward, terminated, truncated, info = env.step(action)

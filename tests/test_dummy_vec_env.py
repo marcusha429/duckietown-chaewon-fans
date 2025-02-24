@@ -5,14 +5,14 @@ import numpy as np
 from stable_baselines3.common.vec_env import DummyVecEnv, VecTransposeImage
 from gym_duckietown.simulator import Simulator
 
-# Import make_env from your project
-from utils.env import make_env
+# Import make_envs from your project
+from utils.env import make_envs
 
 def test_dummy_vec_env():
     print("\n===== TESTING ENVIRONMENT BEFORE VECTORIZATION =====")
     
     # Create a single environment (before vectorization)
-    env = make_env()
+    env = make_envs()
     
     # Test step BEFORE DummyVecEnv
     action = env.action_space.sample()
@@ -28,7 +28,7 @@ def test_dummy_vec_env():
     print("\n===== TESTING ENVIRONMENT AFTER VECTORIZATION =====")
 
     # Apply DummyVecEnv (after verifying base env works)
-    env = VecTransposeImage(DummyVecEnv([make_env]))
+    env = VecTransposeImage(DummyVecEnv([make_envs]))
 
     # Sample action for DummyVecEnv
     action = np.array(env.action_space.sample(), dtype=np.float32).reshape(1, -1)
