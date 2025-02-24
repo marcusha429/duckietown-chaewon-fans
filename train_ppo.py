@@ -37,7 +37,7 @@ class Trainer:
         model = PPO(
             policy="CnnPolicy",
             env=self.env,
-            policy_kwargs={"normalize_images": False},
+            policy_kwargs={"normalize_images": True},
             verbose=1,
             tensorboard_log=tensorboard_log,
             seed=random_seed,
