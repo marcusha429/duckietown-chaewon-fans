@@ -22,10 +22,12 @@ class Trainer:
         Uses the global n_envs parameter and passes any Duckietown-specific parameters as simulator_kwargs.
         """
         n_envs = self.config.get("n_envs", 4)
+        seed = self.config.get("seed", 47)
         simulator_kwargs = self.config.get("simulator_kwargs", {})
         env = make_envs(
             n_envs=n_envs,
-            simulator_kwargs=simulator_kwargs
+            seed=seed,
+            simulator_kwargs=simulator_kwargs,
         )
         return env
 
@@ -35,7 +37,7 @@ class Trainer:
         Global parameters like seed are parsed from the config
         """
         # Global parameters
-        seed= self.config.get("seed", 47)
+        seed = self.config.get("seed", 47)
         tensorboard_log = "logs"
         
         # Choose the RL algorithm
@@ -91,10 +93,10 @@ class Trainer:
         Train the model using training parameters from the configuration.
         The training_parameters section should include at least total_timesteps (and can include other kwargs).
         """
-        model_name = self.config.get("model_name", "ppo_duckietown_model")
+        model_name = self.config.get("model_name", "duckietown_model")
         tb_log_name = model_name
 
-        # Get training-specific parameters. Extra keys here are passed to model.learn as kwargs.
+        # Get training-specific parameters.
         total_timesteps = self.config.get("total_timesteps", 100)
 
         # Set up the checkpoint callback.
