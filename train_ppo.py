@@ -3,11 +3,15 @@ import yaml
 import pyglet
 import os
 
+import gymnasium as gym
 # Hide pyglet window
 window = pyglet.window.Window(visible=False)
 
 from stable_baselines3 import PPO, SAC
 from stable_baselines3.common.callbacks import CheckpointCallback
+from utils.callbacks import RenderCallback
+from stable_baselines3.common.callbacks import EvalCallback
+from stable_baselines3.common.vec_env import VecFrameStack
 from utils.env import make_envs
 
 class Trainer:
@@ -43,24 +47,14 @@ class Trainer:
         
         # Choose the RL algorithm
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()
-        if rl_algorithm == "PPO":
-            model_class = PPO
-        elif rl_algorithm == "SAC":
-            model_class = SAC
-        else:
-            raise ValueError(f"Unknown rl_algorithm: {rl_algorithm}")
-        
-        # Model-specific parameters are provided in a dedicated section
+        model_class = PPO if rl_algorithm == "PPO" else SAC
         model_params = self.config.get("model_parameters", {})
 
         print(f"Creating and instantiating a {rl_algorithm} model with seed {seed} and model parameters: {model_params}")
-        # Instantiate and return the model
         return model_class(
             policy="CnnPolicy",
             env=self.env,
-            policy_kwargs={
-                "normalize_images": True
-            },
+            policy_kwargs={"normalize_images": True},
             tensorboard_log=tensorboard_log,
             seed=seed,
             **model_params
@@ -74,21 +68,13 @@ class Trainer:
         model_name = self.config.get("model_name", "duckietown_model")
         model_path = f"./model_artifacts/{model_name}"
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper() # Default to PPO
-
-        if rl_algorithm == "PPO":
-            model_class = PPO
-        elif rl_algorithm == "SAC":
-            model_class = SAC
-        else:
-            raise ValueError(f"rl_algorithm must be PPO or SAC. Received  {rl_algorithm}")
-        
+             
         if os.path.exists(model_path + ".zip"):
             print(f"Loading {rl_algorithm} model from {model_path}")
+            model_class = PPO if rl_algorithm == "PPO" else SAC   
             model = model_class.load(model_path, env=self.env)
-
         else:
             model = self.create_model()
-        
         return model
 
     def train(self):
@@ -99,8 +85,8 @@ class Trainer:
         model_name = self.config.get("model_name", "duckietown_model")
 
         # Get training-specific parameters.
-        total_timesteps = self.config.get("total_timesteps", 2)
-        print(f"Total timesteps you intend to train the model for is {total_timesteps}")
+        total_timesteps = self.config.get("total_timesteps", 10000)
+        print(f"Training for {total_timesteps} timesteps")
 
         # Set up the checkpoint callback.
         checkpoint_callback = CheckpointCallback(
@@ -109,11 +95,30 @@ class Trainer:
             name_prefix=model_name,
         )
 
+        # Set up a video evaluation callback.
+        # Create an evaluation environment with a single instance and rendering enabled.
+        simulator_kwargs = self.config.get("simulator_params", {})
+        seed = self.config.get("seed", 47)
+        eval_env = make_envs(n_envs=1, simulator_kwargs=simulator_kwargs, seed=seed)
+
+        # Set up the video evaluation callback.
+        video_length = self.config.get("video_length", 100)
+        video_callback = EvalCallback(
+            eval_env,
+            # eval_freq=self.config.get("video_eval_freq", 10000),
+            eval_freq=500,
+            n_eval_episodes=1,
+            render=True,
+            name_prefix=f"{model_name}_eval",
+            verbose=1,
+        )
+
+
         # Begin training. Extra training parameters (if any) are passed as kwargs.
         self.model.learn(
             total_timesteps=total_timesteps,
             tb_log_name=model_name,
-            callback=[checkpoint_callback],
+            callback=[checkpoint_callback, video_callback],
             reset_num_timesteps=False
         )
 
