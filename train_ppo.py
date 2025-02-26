@@ -23,12 +23,13 @@ class Trainer:
         """
         n_envs = self.config.get("n_envs", 4)
         seed = self.config.get("seed", 47)
-        simulator_kwargs = self.config.get("simulator_kwargs", {})
+        simulator_kwargs = self.config.get("simulator_params", {})
         env = make_envs(
             n_envs=n_envs,
             seed=seed,
             simulator_kwargs=simulator_kwargs,
         )
+        print(f"{n_envs} environments created with seed {seed} and simulator arguments: {simulator_kwargs}")
         return env
 
     def create_model(self):
@@ -52,6 +53,7 @@ class Trainer:
         # Model-specific parameters are provided in a dedicated section
         model_params = self.config.get("model_parameters", {})
 
+        print(f"Creating and instantiating a {rl_algorithm} model with seed {seed} and model parameters: {model_params}")
         # Instantiate and return the model
         return model_class(
             policy="CnnPolicy",
@@ -63,6 +65,7 @@ class Trainer:
             seed=seed,
             **model_params
         )
+
 
     def load_or_create_model(self):
         """
@@ -80,10 +83,10 @@ class Trainer:
             raise ValueError(f"rl_algorithm must be PPO or SAC. Received  {rl_algorithm}")
         
         if os.path.exists(model_path + ".zip"):
-            print(f"Loading model from {model_path}")
+            print(f"Loading {rl_algorithm} model from {model_path}")
             model = model_class.load(model_path, env=self.env)
+
         else:
-            print("No model found. Creating a new model.")
             model = self.create_model()
         
         return model
@@ -94,24 +97,22 @@ class Trainer:
         The training_parameters section should include at least total_timesteps (and can include other kwargs).
         """
         model_name = self.config.get("model_name", "duckietown_model")
-        tb_log_name = model_name
 
         # Get training-specific parameters.
-        total_timesteps = self.config.get("total_timesteps", 100)
+        total_timesteps = self.config.get("total_timesteps", 2)
+        print(f"Total timesteps you intend to train the model for is {total_timesteps}")
 
         # Set up the checkpoint callback.
         checkpoint_callback = CheckpointCallback(
             save_freq=1000,
             save_path="./model_artifacts/",
             name_prefix=model_name,
-            save_replay_buffer=True,
-            save_vecnormalize=True,
         )
 
         # Begin training. Extra training parameters (if any) are passed as kwargs.
         self.model.learn(
             total_timesteps=total_timesteps,
-            tb_log_name=tb_log_name,
+            tb_log_name=model_name,
             callback=[checkpoint_callback],
             reset_num_timesteps=False
         )
