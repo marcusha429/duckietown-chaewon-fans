@@ -1,12 +1,13 @@
 #!/bin/bash
-#SBATCH -A cs175_class        ## Account to charge
-#SBATCH --time=04:00:00       ## Maximum running time of program
-#SBATCH --nodes=1             ## Number of nodes.
-                              ## Set to 1 if you are using GPU.
-#SBATCH --partition=standard  ## Partition name
-#SBATCH --mem=20GB            ## Allocated Memory
+#SBATCH -A cs175_class_gpu    ## Account to charge
+#SBATCH --time=06:00:00       ## Maximum running time of program
+#SBATCH --nodes=1             ## Number of nodes
+#SBATCH --partition=gpu       ## Partition name
+#SBATCH --mem=40GB            ## Allocated Memory
 #SBATCH --cpus-per-task 8     ## Number of CPU cores
+#SBATCH --gres=gpu:V100:1     ## Type and number of GPUs
+#SBATCH --tmp=10GB            ## Add swap space
 
 module load ffmpeg # necessary for saving gifs to tensorboard on HPC3
-
-MUJOCO_GL=egl python ducky_project.py
+pip install psutil --user
+python ducky_project.py
