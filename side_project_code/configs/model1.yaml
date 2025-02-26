@@ -1,0 +1,15 @@
+model_name: "scratch_model"
+rl_algorithm: "PPO"
+n_envs: 1
+seed: 47
+
+simulator_params:
+  map_name: "loop_empty"
+  full_transparency: true
+
+total_timesteps: 100
+model_parameters:
+  n_steps: 10
+  n_epochs: 2
+  batch_size: 32
+  verbose: 0

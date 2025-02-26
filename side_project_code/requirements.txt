@@ -1,0 +1,8 @@
+# General libraries
+duckietown-gym-daffy
+stable-baselines3
+tensorflow
+
+# Override specific libraries
+pyglet==1.5.27
+numpy==1.23.5
