@@ -6,11 +6,8 @@ window = pyglet.window.Window(visible=False)
 import argparse
 import yaml
 import os
-import gymnasium as gym
 from stable_baselines3 import PPO, SAC
 from stable_baselines3.common.callbacks import CheckpointCallback
-from stable_baselines3.common.callbacks import EvalCallback
-from stable_baselines3.common.vec_env import VecFrameStack
 from utils.env import make_envs
 from utils.callbacks import VideoRecordingCallback
 
