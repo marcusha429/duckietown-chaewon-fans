@@ -53,6 +53,8 @@ class DuckietownGymnasiumWrapper(gym.Env):
         """
         super().__init__()
         self.env = env
+        # Set the render mode of the environment (important to recording videos of agent using RecordVideo wrapper)
+        self.render_mode = env.render_mode
 
         # Convert spaces from old Gym to Gymnasium
         self.action_space = convert_space(self.env.action_space)
