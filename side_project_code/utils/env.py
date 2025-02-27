@@ -1,10 +1,11 @@
-
 from typing import Dict
 from gym_duckietown.simulator import Simulator
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env.base_vec_env import VecEnv
+
 # from gym_duckietown.wrappers import *
 from .custom import DuckietownGymnasiumWrapper
+
 
 # Create a raw environment
 def make_raw_env(simulator_kwargs):
@@ -47,12 +48,10 @@ def make_gym_env(simulator_kwargs) -> VecEnv:
     return env
 
 
-def make_envs(n_envs: int=4, simulator_kwargs={}, seed: int=47):
+def make_envs(n_envs: int = 4, simulator_kwargs={}, seed: int = 47):
     # Vectorize and parallelize environment
     env = make_vec_env(
-        env_id=lambda: make_gym_env(simulator_kwargs),
-        n_envs=n_envs,
-        seed=seed
+        env_id=lambda: make_gym_env(simulator_kwargs), n_envs=n_envs, seed=seed
     )
     print(f"Vectorized and parallelized {n_envs} environments.")
     return env

@@ -1,5 +1,6 @@
 import random
 import pyglet
+
 window = pyglet.window.Window(visible=False)
 
 import numpy as np
@@ -18,7 +19,7 @@ maps = [
     "small_loop_cw",
     "straight_road",
     "udem1",
-    "zigzag_dists"
+    "zigzag_dists",
 ]
 
 for map in maps:
@@ -30,7 +31,7 @@ for map in maps:
         camera_width=640,
         camera_height=480,
         full_transparency=True,
-        accept_start_angle_deg=20
+        accept_start_angle_deg=20,
     )
 
     # Determine which mode to render at random
@@ -52,5 +53,5 @@ for map in maps:
 
         if done:
             env.reset()
-    
+
     env.window.close()

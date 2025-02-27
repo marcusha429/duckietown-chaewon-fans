@@ -1,4 +1,5 @@
 import pyglet
+
 # Hide pyglet window
 window = pyglet.window.Window(visible=False)
 

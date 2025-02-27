@@ -83,6 +83,7 @@ class NormalizeWrapper(old_gym.ObservationWrapper):
 #     def observation(self, observation):
 #         return observation.transpose(2, 0, 1)
 
+
 class ImgWrapper(old_gym.ObservationWrapper):
     def __init__(self, env):
         super().__init__(env)
@@ -90,14 +91,19 @@ class ImgWrapper(old_gym.ObservationWrapper):
 
         # Correctly define observation space (C, H, W)
         self.observation_space = spaces.Box(
-            low=self.observation_space.low.min(),   # Use min value from Box
-            high=self.observation_space.high.max(), # Use max value from Box
-            shape=(obs_shape[2], obs_shape[0], obs_shape[1]),  # Convert (H, W, C) → (C, H, W)
+            low=self.observation_space.low.min(),  # Use min value from Box
+            high=self.observation_space.high.max(),  # Use max value from Box
+            shape=(
+                obs_shape[2],
+                obs_shape[0],
+                obs_shape[1],
+            ),  # Convert (H, W, C) → (C, H, W)
             dtype=self.observation_space.dtype,
         )
 
     def observation(self, observation):
         return np.transpose(observation, (2, 0, 1))  # Convert (H, W, C) → (C, H, W)
+
 
 class DtRewardWrapper(old_gym.RewardWrapper):
     def __init__(self, env):
