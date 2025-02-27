@@ -24,6 +24,11 @@ def make_raw_env(simulator_kwargs):
 
     # Create Duckietown environment using the merged parameters.
     env = Simulator(**default_kwargs)
+
+    # Set the render mode of the raw environment
+    env.unwrapped.render_mode = "rgb_array"
+    env.render_mode = "rgb_array"
+
     print("Initialized environment")
     return env
 
