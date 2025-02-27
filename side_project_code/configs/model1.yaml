@@ -11,7 +11,7 @@ n_envs: 8
 seed: 47
 
 # Set the number of total timesteps
-total_timesteps: 2e6
+total_timesteps: 2000000
 
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
 simulator_params:

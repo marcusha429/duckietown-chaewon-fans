@@ -9,7 +9,8 @@ import os
 from stable_baselines3 import PPO, SAC
 from stable_baselines3.common.callbacks import CheckpointCallback
 from utils.env import make_envs
-from utils.callbacks import VideoRecordingCallback
+
+# from utils.callbacks import VideoRecordingCallback
 
 
 class Trainer:
@@ -91,15 +92,15 @@ class Trainer:
 
         # Set up the checkpoint callback.
         checkpoint_callback = CheckpointCallback(
-            save_freq=4096,
+            save_freq=31250,
             save_path="./model_artifacts/",
             name_prefix=model_name,
         )
 
-        # Create the custom callback for recording videos every 1024 steps
-        video_callback = VideoRecordingCallback(
-            video_folder="videos", step_interval=1024
-        )
+        # # Create the custom callback for recording videos every 1024 steps
+        # video_callback = VideoRecordingCallback(
+        #     video_folder="videos", video_length=200, save_freq=1024
+        # )
 
         # Begin training
         self.model.learn(
