@@ -1,4 +1,3 @@
-from typing import Dict
 from gym_duckietown.simulator import Simulator
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env.base_vec_env import VecEnv
@@ -12,9 +11,10 @@ def make_raw_env(simulator_kwargs):
     # Default parameters for the environment
     default_kwargs = {
         "map_name": "loop_empty",
-        "max_steps": 5000,
+        "max_steps": 2**20,
         "domain_rand": 0,
         "accept_start_angle_deg": 4,
+        "seed": 47,
         "full_transparency": True,
     }
 
