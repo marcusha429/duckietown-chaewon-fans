@@ -1,26 +1,25 @@
 # Name of the model
-model_name: "scratch_model"
+model_name: "PPO_model"
 
 # Specify the reinforcement learning algorithm (PPO or SAC)
 rl_algorithm: "PPO"
 
 # Number of vectorized, parallel environments
-n_envs: 1
+n_envs: 8
 
 # Random seed
 seed: 47
 
 # Set the number of total timesteps
-total_timesteps: 4096
+total_timesteps: 2e6
 
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
 simulator_params:
   map_name: "loop_empty"
   max_steps: 5000
   domain_rand: False
-  accept_start_angle_deg: 4
   full_transparency: True
-  distorton: False
+  distortion: False
 
 # --------------------------------------
 # All Duckietown simulator parameters  |
@@ -49,14 +48,16 @@ simulator_params:
 # style: str = "photos",
 # enable_leds: bool = False
 
-model_parameters:
-  n_steps: 10
-  n_epochs: 2
-  batch_size: 32
-  verbose: 0
+model_params:
+  learning_rate: 0.0003
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
 # -----------------------------
 # All PPO model parameters    |
 # -----------------------------
+
 # policy: str | type[ActorCriticPolicy],
 # env: GymEnv | str,
 # learning_rate: float | Schedule = 0.0003,
@@ -83,7 +84,8 @@ model_parameters:
 # seed: int | None = None,
 # device: device | str = "auto",
 # _init_setup_model: bool = True
-
+#
+#
 # -----------------------------
 # All SAC model parameters    |
 # -----------------------------
