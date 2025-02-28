@@ -10,7 +10,7 @@ from stable_baselines3 import PPO, SAC
 from stable_baselines3.common.callbacks import CheckpointCallback
 from utils.env import make_envs
 
-# from utils.callbacks import VideoRecordingCallback
+from utils.callbacks import VideoRecordingCallback
 
 
 class Trainer:
@@ -30,7 +30,7 @@ class Trainer:
         Create and return the vectorized environment.
         Uses the global n_envs parameter and passes any Duckietown-specific parameters as simulator_kwargs.
         """
-        n_envs = self.config.get("n_envs", 4)
+        n_envs = self.config.get("n_envs", 1)
         print(f"Printing the simulator kwargs: {self.simulator_kwargs}")
 
         env = make_envs(
@@ -92,22 +92,26 @@ class Trainer:
 
         # Set up the checkpoint callback.
         checkpoint_callback = CheckpointCallback(
-            save_freq=31250,
+            save_freq=1,
             save_path="./model_artifacts/",
             name_prefix=model_name,
+            save_replay_buffer=False,
+            save_vecnormalize=False,
         )
 
-        # # Create the custom callback for recording videos every 1024 steps
-        # video_callback = VideoRecordingCallback(
-        #     video_folder="videos", video_length=200, save_freq=1024
-        # )
+        # Create the custom callback for recording videos every 1024 steps
+        video_callback = VideoRecordingCallback(
+            simulator_kwargs=self.simulator_kwargs,
+            video_folder="videos",
+            video_length=200,
+            save_freq=1,
+        )
 
         # Begin training
         self.model.learn(
             total_timesteps=total_timesteps,
             tb_log_name=model_name,
-            # callback=[checkpoint_callback, video_callback],
-            callback=[checkpoint_callback],
+            callback=[checkpoint_callback, video_callback],
             reset_num_timesteps=False,
         )
 
