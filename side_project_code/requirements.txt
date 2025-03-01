@@ -2,6 +2,7 @@
 duckietown-gym-daffy
 stable-baselines3
 tensorflow
+gymnasium[other]
 
 # Override specific libraries
 pyglet==1.5.27
