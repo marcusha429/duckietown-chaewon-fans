@@ -32,7 +32,7 @@ To use this environment, it is important to use conda with Python version 3.10. 
 
     3. Install the dependencies:
 
-           pip install -r requirements.txt
+           pip install -r requirements.txt --use-feature=fast-deps
 
 ## Configuration
 
