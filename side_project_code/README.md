@@ -1,82 +1,105 @@
-# Duckietown Gymnasium: Next-Gen Reinforcement Learning Playground 🦆🚀
+# Welcome to Reinforcement Learning in DuckieTown
+You've arrived at the ultimate reinvention of duck simulation! This project is born out of a desire to supercharge the classic Duckietown environment by wrapping it in the modern, well-maintained Gymnasium interface. Gone are the days of wrestling with the outdated OpenAI Gym; our custom wrapper lets you leverage cutting-edge reinforcement learning techniques with stable-baselines3, ensuring a smoother, more powerful training experience that’s built for today’s RL community.
 
-Welcome to the **Duckietown Gymnasium** – a modular, clean, and cutting-edge training setup designed for reinforcement learning in Duckietown! Whether you're experimenting with legacy algorithms or leveraging the latest stable baselines, this platform is built to help you iterate rapidly and push the boundaries of your RL experiments. Get ready for a playful dive into the world of duck-powered learning! 😎
+At its core, Duckietown RL is a modular training framework designed for rapid experimentation. With easy-to-tweak YAML configuration files and seamless design (inspired by PyTorch Lightning), you can effortlessly customize models, adjust parameters, and dive into new algorithms without the usual compatibility hassles. Whether you’re a seasoned researcher or just starting your RL journey, this open source codebase promises a fun, flexible, and innovative way to explore the exciting world of Duckietown – making every experiment a quacktastic adventure!
 
 
 ![A duckiebot spinning in the duckietown environment](docs/gifs/spinning_duckiebot.gif)
 ---
+This project provides a flexible framework for training reinforcement learning models in the Duckietown simulation environment. With configurable YAML files, a dedicated training script, evaluation utilities, and custom gymnasium wrappers, users can easily experiment with various models and training setups.
 
-## Getting Started
+## Table of Contents
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Tests](#tests)
+- [Utilities](#utilities)
+- [Usage](#usage)
+- [Contributing](#contributing)
 
-### Environment Setup 🐍
-    conda create -n duckietown_env python=3.10
-    conda activate duckietown_env
+## Installation
 
-    pip install --upgrade pip
-    pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/ --use-feature=fast-deps
+To use this environment, it is important to use conda with Python version 3.10. Follow these steps:
 
-*Pro tip: Our setup uses optimized dependency resolution ("fast deps"), and Chinese mirrors of PyPI servers to get you up and running in no time!*
+    1. Create a new conda environment with Python 3.10:
+    
+           conda create --name duckietown_env python=3.10
 
----
+    2. Activate the environment:
 
-## Project Overview
+           conda activate duckietown_env
 
-### What’s Inside?
-This project is built as a gymnasium for Duckietown, merging the best of legacy support with the flexibility of newer, state-of-the-art reinforcement learning frameworks. Here’s what you can expect:
+    3. Install the dependencies:
 
-- **Modern & Modular Architecture:** Designed to let you plug in new ideas with minimal hassle. The system is highly modular, so you can add or modify components rapidly.
-- **Dual-Mode Compatibility:** Supports both older interfaces and a modernized version of the gym, allowing seamless integration of stable baselines algorithms and other advanced RL methods.
-- **Cross-Platform Functionality:** The simulation engine is built with compatibility in mind, having been tested on both macOS and Linux systems.
+           pip install -r requirements.txt
 
----
+## Configuration
 
-## Deep Dive: How It Works
+The configurations for training are stored in YAML files within the **configs** folder. These files allow you to tweak:
+- The model type and parameters
+- Simulator environment settings for Duckietown
+- Total number of time steps
+- Seed values and model naming
+- Number of environments (n_envs) and other parameters
 
-### Environment Module
-The core of this project is its custom-built environment, which simulates Duckietown with high fidelity. Key features include:
+Users can easily adjust these settings declaratively and then pass the desired configuration file to the trainer.
 
-- **Advanced Rendering:** The simulation leverages a robust rendering engine (using pyglet) that supports multiple view modes. Whether you need a human-friendly display or raw image arrays for headless training, the environment adapts to your needs.
-- **Customizable Parameters:** From setting random seeds and choosing maps to adjusting camera dimensions and visual effects (like transparency and distortion), every aspect of the simulation is fine-tunable.
-- **Modularity at Its Best:** The environment is wrapped in custom modules that abstract away the complexities, making it straightforward to integrate with various reinforcement learning libraries.
+## Training
 
-### Agent Training Module
-The training side of our project is designed to work seamlessly with algorithms like PPO from Stable Baselines 3. Here’s what you should know:
+The main training logic is implemented in **train.py**. This script:
+- Parses the provided configuration file (e.g., `configs/fast_dev_run.yaml` or `configs/model1.yaml`)
+- Instantiates a new model or loads one from the model artifacts
+- Initializes the Duckietown environment
+- Begins training for the specified number of time steps
 
-- **Custom Wrappers:** We provide custom wrappers that extend the base environment, adding functionalities like image normalization and tailored preprocessing to optimize learning.
-- **Flexible Pipeline:** The setup uses vectorized environments and image transposition wrappers to ensure compatibility with convolutional neural network policies. This means you can train your agents efficiently while experimenting with different architectures.
-- **Easy Experimentation:** Adjusting training parameters—whether it’s the policy type, the number of timesteps, or tensorboard logging—can be done with minimal changes to the code. This flexibility is perfect for rapidly testing new ideas and iterating on your experiments.
+During training, the framework:
+- Periodically saves model checkpoints to the model artifacts directory
+- Optionally records video snippets of the agent in MP4 format
+- Logs agent performance to TensorBoard in the **logs** directory
 
-### Simulation & Rendering Documentation
-Even though this README doesn’t include the raw simulation code, here’s what you can expect in the underlying implementation:
+To run the training, execute one of the following commands:
 
-- **Simulation Engine:** A robust simulator initializes the Duckietown environment with customizable settings such as random seeds, map selection, step limits, and more.
-- **Rendering Options:** Multiple rendering modes are supported, including human-readable graphics and various analytical views (like top-down and free camera perspectives). This allows you to visualize the environment from different angles and debug your RL agent’s behavior effectively.
-- **Dynamic Control:** The simulation continuously processes actions, updates the environment state, and renders the results, all within a loop that resets the simulation upon reaching terminal conditions. This design ensures continuous and stable training sessions.
+    python3 train.py --config configs/fast_dev_run.yaml
+    python3 train.py --config configs/model1.yaml
 
----
+You can monitor the training progress by running:
 
-## Why You’ll Love It ❤️
+    tensorboard --logdir=./logs
 
-- **Speed & Flexibility:** Rapidly prototype new ideas without the overhead of outdated architectures.
-- **Plug-and-Play Design:** Easily extend or modify components with a clear, modular codebase.
-- **Tested Across Platforms:** Enjoy a smooth experience on both macOS and Linux, removing the “it works on my machine” excuse once and for all.
-- **Enhanced Visual Feedback:** With multiple rendering modes, you get an insightful look into your simulation, making debugging and improvements a breeze.
+## Evaluation
 
----
+The **evaluate_model.py** script contains the logic for evaluating a trained model. It allows you to:
+- Hardcode or specify the name of the saved model (typically in a ZIP file)
+- Optionally render the environment during evaluation to observe the agent’s performance
 
-## Contributing & Future Enhancements
+This is useful for quickly verifying how well the trained model performs in the Duckietown simulation.
 
-We’re all about community and collaboration! If you’re passionate about reinforcement learning or have ideas to enhance Duckietown Gymnasium, your contributions are more than welcome. Here are some ways you can help:
+## Tests
 
-- **Feature Enhancements:** Add new simulation features, support for additional algorithms, or improve the user interface.
-- **Bug Fixes:** Help us track down and squash any pesky bugs.
-- **Documentation:** Contribute to making the documentation even clearer so that new users can hit the ground running.
-- **Community Engagement:** Share your experiences, provide feedback, and join discussions on future improvements.
+The **tests** directory includes various scripts that:
+- Help verify whether your environment is set up correctly
+- Check that the custom wrappers and utility functions work as expected
 
----
+These tests serve as a guide to ensure that each component of the framework is operating correctly.
 
-## Final Notes
+## Utilities
 
-Dive in, experiment, and remember: **Reinforcement Learning is all about iterating until your duck learns to fly!** Embrace the playfulness and creativity of Duckietown Gymnasium as you push the envelope of what’s possible in AI-driven simulations. 🚀
+The **utils** folder contains essential helper functions and modules. Key components include:
+- Custom gymnasium environment logic that enhances compatibility with stable baselines algorithms
+- Callbacks for training, such as a video recording callback (found in **utils/callbacks.py**), which periodically saves training videos
+- Additional utilities for managing environment configurations and custom logic specific to Duckietown
 
-Happy coding, and may your RL adventures be as fun and unpredictable as a flock of ducks on a windy day! 😄🦆
+## Usage
+
+- **Training:** Run the training script with the desired configuration file.
+- **Evaluation:** Use the evaluation script to test a saved model.
+- **Monitoring:** Launch TensorBoard to monitor training progress with the command:
+
+      tensorboard --logdir=./logs
+
+## Contributing
+
+Contributions are welcome! If you have suggestions, improvements, or bug fixes, please submit a pull request or open an issue. Your input is greatly appreciated.
+
+Happy training and evaluating your Duckietown models!
