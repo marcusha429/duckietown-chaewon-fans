@@ -16,7 +16,7 @@ total_timesteps: 2000000
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
 simulator_params:
   map_name: "loop_empty"
-  max_steps: 5000
+  max_steps: 250
   domain_rand: False
   full_transparency: True
   distortion: False

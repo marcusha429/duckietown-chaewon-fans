@@ -5,7 +5,7 @@ model_name: "fast_dev_run"
 rl_algorithm: "PPO"
 
 # Number of vectorized, parallel environments
-n_envs: 4
+n_envs: 2
 
 # Random seed
 seed: 47
@@ -53,7 +53,7 @@ simulator_params:
 model_params:
   n_steps: 2
   batch_size: 2
-  n_epochs: 1
+  n_epochs: 2
 # -----------------------------
 # All PPO model parameters    |
 # -----------------------------
