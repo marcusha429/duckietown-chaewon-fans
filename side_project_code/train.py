@@ -28,7 +28,7 @@ class Trainer:
         Uses the global n_envs parameter and passes any Duckietown-specific parameters as simulator_kwargs.
         """
         n_envs = self.config.get("n_envs", 1)
-        print(f"Printing the simulator kwargs: {self.simulator_kwargs}")
+        print(f"Duckietown Simulator arguments: {self.simulator_kwargs}")
 
         env = make_envs(
             n_envs=n_envs,
@@ -36,7 +36,7 @@ class Trainer:
             simulator_kwargs=self.simulator_kwargs,
         )
         print(
-            f"{n_envs} environments created with seed {self.seed} and simulator arguments: {self.simulator_kwargs}"
+            f"Created {n_envs} environments with seed {self.seed} and simulator arguments: {self.simulator_kwargs}"
         )
         return env
 
@@ -50,7 +50,7 @@ class Trainer:
         model_class = PPO if rl_algorithm == "PPO" else SAC
 
         print(
-            f"Creating and instantiating a {rl_algorithm} model with seed {self.seed} and model parameters: {self.model_params}"
+            f"Creating {rl_algorithm} model with seed {self.seed} and model arguments: {self.model_params}"
         )
         return model_class(
             policy="CnnPolicy",
@@ -69,7 +69,7 @@ class Trainer:
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()  # Default to PPO
 
         if os.path.exists(model_path + ".zip"):
-            print(f"Loading {rl_algorithm} model from {model_path}")
+            print(f"Loading existing \"{rl_algorithm}\" model from {model_path}")
             model_class = PPO if rl_algorithm == "PPO" else SAC
             model = model_class.load(model_path, env=self.env)
         else:
@@ -87,9 +87,12 @@ class Trainer:
         total_timesteps = self.config.get("total_timesteps", 32)
         print(f"Training for {total_timesteps} timesteps")
 
+        checkpoint_save_freq = self.config.get("checkpoint_save_freq", 8192)
+        video_save_freq = self.config.get("video_save_freq", 8192)
+
         # Set up the checkpoint callback.
         checkpoint_callback = CheckpointCallback(
-            save_freq=8192,
+            save_freq=checkpoint_save_freq,
             save_path="./model_artifacts/",
             name_prefix=model_name,
             save_replay_buffer=False,
@@ -101,7 +104,7 @@ class Trainer:
             simulator_kwargs=self.simulator_kwargs,
             video_folder="videos",
             video_length=200,
-            save_freq=8192,
+            save_freq=video_save_freq,
         )
 
         # Begin training
@@ -114,6 +117,7 @@ class Trainer:
 
         # Save the final model.
         self.model.save(f"./model_artifacts/{model_name}")
+        print(f"Saved final model artifact to ./model_artifacts/{model_name}")
 
 
 def parse_args():

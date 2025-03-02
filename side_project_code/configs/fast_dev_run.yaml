@@ -1,5 +1,5 @@
 # Name of the model
-model_name: "fast_dev_run"
+model_name: "fast_dev_run_model"
 
 # Specify the reinforcement learning algorithm (PPO or SAC)
 rl_algorithm: "PPO"
@@ -12,6 +12,12 @@ seed: 47
 
 # Set the number of total timesteps
 total_timesteps: 1
+
+# How often to save model checkpoints during training
+checkpoint_save_freq: 1
+
+# How often to save video of agent during training
+video_save_freq: 1
 
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
 simulator_params:
