@@ -7,7 +7,6 @@ import os
 from stable_baselines3 import PPO, SAC
 from stable_baselines3.common.callbacks import CheckpointCallback
 from utils.env import make_envs
-
 from utils.callbacks import VideoRecordingCallback
 
 
@@ -90,7 +89,7 @@ class Trainer:
 
         # Set up the checkpoint callback.
         checkpoint_callback = CheckpointCallback(
-            save_freq=1,
+            save_freq=8192,
             save_path="./model_artifacts/",
             name_prefix=model_name,
             save_replay_buffer=False,
@@ -102,7 +101,7 @@ class Trainer:
             simulator_kwargs=self.simulator_kwargs,
             video_folder="videos",
             video_length=200,
-            save_freq=1,
+            save_freq=8192,
         )
 
         # Begin training
