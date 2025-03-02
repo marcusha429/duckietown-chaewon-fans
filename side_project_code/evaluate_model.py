@@ -1,6 +1,5 @@
-import pyglet
-
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO

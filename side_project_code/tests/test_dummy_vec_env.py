@@ -1,6 +1,5 @@
-import pyglet
-
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 import numpy as np
 from stable_baselines3.common.vec_env import DummyVecEnv, VecTransposeImage

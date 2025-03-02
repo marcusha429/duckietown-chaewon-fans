@@ -1,7 +1,5 @@
-# Hide pyglet window
-import pyglet
-
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 import argparse
 import yaml

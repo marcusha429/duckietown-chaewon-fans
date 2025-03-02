@@ -1,6 +1,5 @@
-import pyglet
-
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 import gym as old_gym  # Original gym used by Duckietown
 import gymnasium as gym  # Gymnasium API

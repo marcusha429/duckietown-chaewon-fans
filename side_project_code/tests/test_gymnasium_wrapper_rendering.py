@@ -1,7 +1,5 @@
-import pyglet
-
-# Hide pyglet window
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 from utils.env import make_gym_env
 

@@ -1,8 +1,7 @@
+# import pyglet
+# window = pyglet.window.Window(visible=False)
+
 import random
-import pyglet
-
-window = pyglet.window.Window(visible=False)
-
 import numpy as np
 from gym_duckietown.simulator import Simulator
 

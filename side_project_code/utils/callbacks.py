@@ -1,8 +1,5 @@
-import pyglet
-
-
-# Hide pyglet window
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 from stable_baselines3.common.callbacks import BaseCallback
 from gymnasium.wrappers import RecordVideo

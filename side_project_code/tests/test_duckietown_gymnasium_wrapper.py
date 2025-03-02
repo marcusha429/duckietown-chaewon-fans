@@ -1,6 +1,5 @@
-import pyglet
-
-window = pyglet.window.Window(visible=False)
+# import pyglet
+# window = pyglet.window.Window(visible=False)
 
 from stable_baselines3.common.env_checker import check_env
 from gym_duckietown.simulator import Simulator
