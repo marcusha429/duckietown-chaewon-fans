@@ -1,2 +1,14 @@
-*tensorboard_logs
-*.zip
+# Ignore job_logs directory
+job_logs/
+
+# Ignore logs directory
+logs/
+
+# Ignore any __pycache__ directories
+**/__pycache__/
+
+# Ignore videos directory
+videos/
+
+# Ignore model artifacts
+model_artifacts/
