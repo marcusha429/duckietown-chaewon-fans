@@ -70,7 +70,7 @@ class Trainer:
         Load the model from the checkpoint if it exists, otherwise create a new model.
         """
         model_name = self.config.get("model_name", "duckietown_model")
-        model_path = f"./model_artifacts/{model_name}"
+        model_path = f"./model_artifacts/{model_name}/{model_name}"
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()
 
         if os.path.exists(model_path + ".zip"):
@@ -96,16 +96,16 @@ class Trainer:
         # Set up callbacks
         checkpoint_callback = CheckpointCallback(
             save_freq=checkpoint_save_freq,
-            save_path="./model_artifacts/",
+            save_path=f"./model_artifacts/{model_name}",
             name_prefix=model_name,
             save_replay_buffer=False,
             save_vecnormalize=False,
         )
 
-        # Create the custom callback for recording videos every 1024 steps
+        # Create the custom callback for periodically recording videos
         video_callback = VideoRecordingCallback(
             simulator_kwargs=self.simulator_kwargs,
-            video_folder="videos",
+            video_folder=f"videos/{model_name}",
             video_length=200,
             save_freq=video_save_freq,
         )
@@ -119,8 +119,8 @@ class Trainer:
         )
 
         # Save the final model.
-        self.model.save(f"./model_artifacts/{model_name}")
-        print(f"Saved final model artifact to ./model_artifacts/{model_name}")
+        self.model.save(f"./model_artifacts/{model_name}/{model_name}")
+        print(f"Saved final model artifact to ./model_artifacts/{model_name}/{model_name}")
 
 
 def parse_args():
