@@ -60,6 +60,6 @@ class VideoRecordingCallback(BaseCallback):
                 episode_over = terminated or truncated
 
             # Close the environment after the episode
-            # self.env.close()
+            self.env.close()
 
         return True
