@@ -4,8 +4,10 @@
 import argparse
 import yaml
 import os
+
 from stable_baselines3 import PPO, SAC
 from stable_baselines3.common.callbacks import CheckpointCallback
+
 from utils.env import make_envs
 from utils.callbacks import VideoRecordingCallback
 
@@ -14,8 +16,11 @@ class Trainer:
     def __init__(self, config: dict):
         self.config = config
         self.seed = self.config.get("seed", 47)
+
+        # Set up simulator and model parameters with defaults
         self.simulator_kwargs = self.config.get("simulator_params", {})
         self.simulator_kwargs.setdefault("seed", self.seed)
+
         self.model_params = self.config.get("model_params", {})
         self.model_params.setdefault("seed", self.seed)
 
@@ -43,7 +48,7 @@ class Trainer:
     def create_model(self):
         """
         Create the RL model (PPO or SAC) using the fixed parameters plus any additional model-specific parameters.
-        Global parameters like seed are parsed from the config
+        Global parameters like seed are parsed from the config.
         """
         # Choose the RL algorithm
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()
@@ -66,7 +71,7 @@ class Trainer:
         """
         model_name = self.config.get("model_name", "duckietown_model")
         model_path = f"./model_artifacts/{model_name}"
-        rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()  # Default to PPO
+        rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()
 
         if os.path.exists(model_path + ".zip"):
             print(f"Loading existing \"{rl_algorithm}\" model from {model_path}")
@@ -82,15 +87,13 @@ class Trainer:
         The training_parameters section should include at least total_timesteps (and can include other kwargs).
         """
         model_name = self.config.get("model_name", "duckietown_model")
-
-        # Get training-specific parameters.
         total_timesteps = self.config.get("total_timesteps", 32)
         print(f"Training for {total_timesteps} timesteps")
 
         checkpoint_save_freq = self.config.get("checkpoint_save_freq", 8192)
         video_save_freq = self.config.get("video_save_freq", 8192)
 
-        # Set up the checkpoint callback.
+        # Set up callbacks
         checkpoint_callback = CheckpointCallback(
             save_freq=checkpoint_save_freq,
             save_path="./model_artifacts/",
