@@ -74,7 +74,7 @@ class Trainer:
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()
 
         if os.path.exists(model_path + ".zip"):
-            print(f"Loading existing \"{rl_algorithm}\" model from {model_path}")
+            print(f'Loading existing "{rl_algorithm}" model from {model_path}')
             model_class = PPO if rl_algorithm == "PPO" else SAC
             model = model_class.load(model_path, env=self.env)
         else:
@@ -87,13 +87,43 @@ class Trainer:
         The training_parameters section should include at least total_timesteps (and can include other kwargs).
         """
         model_name = self.config.get("model_name", "duckietown_model")
+        print(f"Model name: {model_name}")
         total_timesteps = self.config.get("total_timesteps", 32)
         print(f"Training for {total_timesteps} timesteps")
 
-        checkpoint_save_freq = self.config.get("checkpoint_save_freq", 8192)
-        video_save_freq = self.config.get("video_save_freq", 8192)
+        # Dynamic checkpoint save frequency (k)
+        n_envs = self.config.get("n_envs", 1)
+        total_agent_steps = (
+            total_timesteps // n_envs
+        )  # total agent steps (not parallelized)
+        k = total_agent_steps // 20  # Default to 20 total checkpoints
 
-        # Set up callbacks
+        # Use k as the default checkpoint_save_freq
+        checkpoint_save_freq = self.config.get("checkpoint_save_freq", k)
+        video_save_freq = self.config.get("video_save_freq", k)
+
+        # Printing the frequencies
+        print(f"Checkpoint saving frequency: {checkpoint_save_freq}")
+        print(f"Video saving frequency: {video_save_freq}")
+
+        # Adjusting frequencies if n_envs > 1
+        if n_envs > 1:
+            adjusted_checkpoint_freq = checkpoint_save_freq // n_envs
+            adjusted_video_freq = video_save_freq // n_envs
+
+            # Warning message for the current behavior
+            print(
+                f"\033[1m\033[31mWARNING: You are using {n_envs} n_envs. This means your checkpoint and video saves will happen every "
+                f"{n_envs * checkpoint_save_freq} steps (note the multiplication with n_envs). Be careful about this behavior! \033[0m"
+            )
+
+            # Recommendation message for adjustment
+            print(
+                f"\033[1m\033[32mNOTE: For more accurate saving of agent steps, consider adjusting the save frequencies to {adjusted_checkpoint_freq} for checkpoints, "
+                f"and {adjusted_video_freq} for videos. This ensures saving occurs every real agent step. (Ignore if adjusted already) \n\033[0m"
+            )
+
+        # Set up checkpoint callback
         checkpoint_callback = CheckpointCallback(
             save_freq=checkpoint_save_freq,
             save_path=f"./model_artifacts/{model_name}",
@@ -110,6 +140,7 @@ class Trainer:
             save_freq=video_save_freq,
         )
 
+        print("Beginning training...")
         # Begin training
         self.model.learn(
             total_timesteps=total_timesteps,
@@ -117,10 +148,13 @@ class Trainer:
             callback=[checkpoint_callback, video_callback],
             reset_num_timesteps=False,
         )
+        print("Training complete")
 
         # Save the final model.
         self.model.save(f"./model_artifacts/{model_name}/{model_name}")
-        print(f"Saved final model artifact to ./model_artifacts/{model_name}/{model_name}")
+        print(
+            f"Saved final model artifact to ./model_artifacts/{model_name}/{model_name}"
+        )
 
 
 def parse_args():
