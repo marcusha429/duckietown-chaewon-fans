@@ -8,7 +8,7 @@ rl_algorithm: "PPO"
 n_envs: 8
 
 # Set the number of total timesteps
-total_timesteps: 1000000
+total_timesteps: 2000000
 
 # Set the seed
 seed: 47
