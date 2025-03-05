@@ -19,8 +19,6 @@ class Trainer:
 
         # Set up simulator and model parameters with defaults
         self.simulator_kwargs = self.config.get("simulator_params", {})
-        self.simulator_kwargs.setdefault("seed", self.seed)
-
         self.model_params = self.config.get("model_params", {})
         self.model_params.setdefault("seed", self.seed)
 
