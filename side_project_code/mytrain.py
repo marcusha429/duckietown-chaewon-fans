@@ -15,7 +15,6 @@ class Trainer:
         self.config = config
         self.seed = self.config.get("seed", 47)
         self.simulator_kwargs = self.config.get("simulator_params", {})
-        self.simulator_kwargs.setdefault("seed", self.seed)
         self.model_params = self.config.get("model_params", {})
         self.model_params.setdefault("seed", self.seed)
 
@@ -69,8 +68,15 @@ class Trainer:
         total_timesteps = self.config.get("total_timesteps", 32)
         print(f"Training for {total_timesteps} timesteps")
 
-        checkpoint_save_freq = self.config.get("checkpoint_save_freq", 8192)
-        video_save_freq = self.config.get("video_save_freq", 8192)
+        # Dynamic checkpoint save frequency (k)
+        n_envs = self.config.get("n_envs", 1)
+        total_agent_steps = (
+            total_timesteps // n_envs
+        )
+        k = total_agent_steps // 20  # Default to 20 total checkpoints during the training
+
+        checkpoint_save_freq = self.config.get("checkpoint_save_freq", k)
+        video_save_freq = self.config.get("video_save_freq", k)
 
         checkpoint_callback = CheckpointCallback(
             save_freq=checkpoint_save_freq,
