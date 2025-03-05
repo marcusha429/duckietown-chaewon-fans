@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH -A cs175_class                          # Account to charge
 #SBATCH --job-name=PPO_8_envs_default           # Set the name of the job
 #SBATCH --output=job_logs/%j.log                # Specify where to save the job's standard output and error logs. 
 #SBATCH --time=6:00:00                          # Set the maximum run time for the job
