@@ -89,7 +89,7 @@ class Trainer:
         video_callback = VideoRecordingCallback(
             simulator_kwargs=self.simulator_kwargs,
             video_folder="videos",
-            video_length=300,
+            video_length=1000,
             save_freq=video_save_freq,
         )
 

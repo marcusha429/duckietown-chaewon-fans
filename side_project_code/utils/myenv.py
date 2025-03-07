@@ -10,11 +10,15 @@ from .mycustom import DuckietownGymnasiumWrapper
 def make_raw_env(simulator_kwargs):
     default_kwargs = {
         "map_name": "loop_empty",
+        "max_steps": 100,
         "accept_start_angle_deg": 4,
         "full_transparency": True,
+        "domain_rand": False,
     }
     if simulator_kwargs is not None:
         default_kwargs.update(simulator_kwargs)
+    default_kwargs.setdefault("camera_width", 84)
+    default_kwargs.setdefault("camera_height", 84)
 
     env = Simulator(**default_kwargs)
     env.unwrapped.render_mode = "rgb_array"
@@ -36,7 +40,7 @@ def make_envs(n_envs: int = 4, simulator_kwargs={}, seed: int = 47):
         lambda i=i: make_gym_env({**simulator_kwargs, "seed": seed + i})
         for i in range(n_envs)
     ]
-
+    from stable_baselines3.common.vec_env import VecFrameStack
     env = DummyVecEnv(env_fns)
     print(f"Created {n_envs} environments with unique seeds starting from {seed}.")
     return env

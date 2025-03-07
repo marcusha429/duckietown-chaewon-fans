@@ -11,7 +11,7 @@ class VideoRecordingCallback(BaseCallback):
         self,
         simulator_kwargs={},
         video_folder: str = "videos",
-        video_length: int = 200,
+        video_length: int = 1000,
         video_prefix: str = "evaluation",
         save_freq: int = 1024,
         verbose=0,
