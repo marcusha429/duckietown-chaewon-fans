@@ -6,8 +6,8 @@ total_timesteps: 3000000
 
 simulator_params:
   domain_rand: False
-  map_name: "loop_empty"
-  max_steps: 100
+  map_name: "small_loop"
+  max_steps: 250
   draw_curve: False
   draw_bbox: False
   camera_width: 84

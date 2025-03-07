@@ -10,7 +10,7 @@ from .custom import DuckietownGymnasiumWrapper
 def make_raw_env(simulator_kwargs):
     # Default parameters for the environment
     default_kwargs = {
-        "map_name": "loop_empty",
+        "map_name": "small_loop",
         "full_transparency": True,
         "max_steps": 250,   #adjust max step to 250 
         "domain_rand": False,  #turn off domain randomization
@@ -60,9 +60,9 @@ def make_envs(n_envs: int = 8, simulator_kwargs={}, seed: int = 47):
         lambda i=i: make_gym_env({**simulator_kwargs, "seed": seed + i})
         for i in range(n_envs)
     ]
-    from stable_baselines3.common.vec_env import VecFrameStack
-    env = VecFrameStack(env, n_stack=3) #add 3 stack frame
     # Vectorize and parallelize environments
     env = DummyVecEnv(env_fns)
+    from stable_baselines3.common.vec_env import VecFrameStack
+    env = VecFrameStack(env, n_stack=3) #add 3 stack frame
     print(f"Created {n_envs} environments with unique seeds starting from {seed}.")
     return env
