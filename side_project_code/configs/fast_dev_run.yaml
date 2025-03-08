@@ -11,24 +11,21 @@ n_envs: 2
 seed: 47
 
 # Set the number of total timesteps
-total_timesteps: 1
+total_timesteps: 64
 
 # How often to save model checkpoints during training
-checkpoint_save_freq: 1
+# checkpoint_save_freq: 1024
 
 # How often to save video of agent during training
-video_save_freq: 1
+# video_save_freq: 1024
 
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
-simulator_params:
-  map_name: "loop_empty"
-  max_steps: 250
-  domain_rand: False
-  full_transparency: True
-  distortion: False
-  camera_width: 320
-  camera_height: 240
+# #simulator_params:
 
+model_params:
+  n_steps: 32
+  batch_size: 32
+  n_epochs: 2
 # --------------------------------------
 # All Duckietown simulator parameters  |
 # --------------------------------------
@@ -56,10 +53,6 @@ simulator_params:
 # style: str = "photos",
 # enable_leds: bool = False
 
-model_params:
-  n_steps: 2
-  batch_size: 2
-  n_epochs: 2
 # -----------------------------
 # All PPO model parameters    |
 # -----------------------------
