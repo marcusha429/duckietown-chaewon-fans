@@ -1,10 +1,11 @@
 # utils/env.py
 from gym_duckietown.simulator import Simulator
-from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
+from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.vec_env.base_vec_env import VecEnv
 
 from gym_duckietown.wrappers import *
 from .mycustom import DuckietownGymnasiumWrapper
+from .myframestack import FrameStack
 
 
 def make_raw_env(simulator_kwargs):
@@ -31,6 +32,7 @@ def make_raw_env(simulator_kwargs):
 def make_gym_env(simulator_kwargs) -> VecEnv:
     env = make_raw_env(simulator_kwargs)
     env = DuckietownGymnasiumWrapper(env)
+    env = FrameStack(env, 3)
     print("Applied Gymnasium wrapper")
     return env
 
@@ -42,9 +44,7 @@ def make_envs(n_envs: int = 4, simulator_kwargs={}, seed: int = 47):
     ]
     env = DummyVecEnv(env_fns)
     
-    # Add frame stacking with 3 frames
-    from stable_baselines3.common.vec_env import VecFrameStack
-    env = VecFrameStack(env, n_stack=3)
 
     print(f"Created {n_envs} environments with unique seeds starting from {seed}.")
+    print(f"Observation space after stacking: {env.observation_space}")
     return env

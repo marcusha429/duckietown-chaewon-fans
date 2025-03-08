@@ -3,8 +3,8 @@
 
 from stable_baselines3.common.callbacks import BaseCallback
 from gymnasium.wrappers import RecordVideo
-from .env import make_gym_env
-
+# from .env import make_gym_env
+from .myenv import make_gym_env
 
 class VideoRecordingCallback(BaseCallback):
     def __init__(
