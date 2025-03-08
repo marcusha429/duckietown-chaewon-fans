@@ -8,17 +8,13 @@ rl_algorithm: "PPO"
 n_envs: 16
 
 # Set the number of total timesteps
-total_timesteps: 2000000
+total_timesteps: 3000000
 
 # Set the seed
 seed: 47
 
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
-simulator_params:
-  map_name: "loop_empty"
-  camera_width: 320
-  camera_height: 240
-  full_transparency: True
+#simulator_params:
 
 model_params:
   batch_size: 128

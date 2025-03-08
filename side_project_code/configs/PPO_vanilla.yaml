@@ -1,30 +1,20 @@
 # Name of the model
-model_name: "PPO_8_envs_0.003lr"
+model_name: "PPO_vanilla"
 
 # Specify the reinforcement learning algorithm (PPO or SAC)
 rl_algorithm: "PPO"
 
 # Number of vectorized, parallel environments
-n_envs: 8
-
-# Random seed
-seed: 47
+n_envs: 16
 
 # Set the number of total timesteps
-total_timesteps: 100000
+total_timesteps: 3000000
 
-# Checkpoint and video recording frequency
-# checkpoint_save_freq: 200000
-# video_save_freq: 200000
+# Set the seed
+seed: 47
 
 # Parameters to the duckietown simulator (See defaults in utils/env.py)
-simulator_params:
-  map_name: "loop_empty"
-  max_steps: 250
-  camera_width: 320
-  camera_height: 240
-  full_transparency: True
-  seed: 47
+#simulator_params:
 
 # --------------------------------------
 # All Duckietown simulator parameters  |
@@ -53,9 +43,6 @@ simulator_params:
 # style: str = "photos",
 # enable_leds: bool = False
 
-model_params:
-  learning_rate: 0.0003
-  seed: 47
 # -----------------------------
 # All PPO model parameters    |
 # -----------------------------
