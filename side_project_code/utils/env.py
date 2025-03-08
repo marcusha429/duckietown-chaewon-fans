@@ -5,6 +5,7 @@ from stable_baselines3.common.vec_env import VecMonitor
 
 from gym_duckietown.wrappers import *
 from .custom import DuckietownGymnasiumWrapper
+from .myframestack import FrameStack
 
 
 # Create a raw environment
@@ -50,6 +51,7 @@ def make_gym_env(simulator_kwargs) -> VecEnv:
 
     # Apply Gymnasium wrapper
     env = DuckietownGymnasiumWrapper(env)
+    env = FrameStack(env, 3)
     print("Applied Gymnasium wrapper")
 
     return env
