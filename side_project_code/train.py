@@ -96,6 +96,10 @@ class Trainer:
         )  # total agent steps (not parallelized)
         k = total_agent_steps // 20  # Default to 20 total checkpoints
 
+        # Avoid division by zero errors
+        if k == 0:
+            k = total_timesteps - 1
+
         # Use k as the default checkpoint_save_freq
         checkpoint_save_freq = self.config.get("checkpoint_save_freq", k)
         video_save_freq = self.config.get("video_save_freq", k)
