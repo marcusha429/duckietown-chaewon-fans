@@ -1,11 +1,11 @@
 from gym_duckietown.simulator import Simulator
 from stable_baselines3.common.vec_env.base_vec_env import VecEnv
 from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
-from stable_baselines3.common.vec_env import VecMonitor
-
+from stable_baselines3.common.vec_env import VecMonitor, VecFrameStack
 from gym_duckietown.wrappers import *
+from stable_baselines3.common.vec_env import VecTransposeImage
+from gymnasium.wrappers import ClipReward
 from .custom import DuckietownGymnasiumWrapper
-from .myframestack import FrameStack
 
 
 # Create a raw environment
@@ -51,8 +51,10 @@ def make_gym_env(simulator_kwargs) -> VecEnv:
 
     # Apply Gymnasium wrapper
     env = DuckietownGymnasiumWrapper(env)
-    env = FrameStack(env, 3)
     print("Applied Gymnasium wrapper")
+
+    # Clip rewards
+    env = ClipReward(env, -1, 1)
 
     return env
 
@@ -70,7 +72,10 @@ def make_envs(n_envs: int = 8, simulator_kwargs={}, seed: int = 47):
     env = VecMonitor(env)
 
     # from stable_baselines3.common.vec_env import VecFrameStack
-    # env = VecFrameStack(env, n_stack=3) #add 3 stack frame
+    env = VecFrameStack(env, n_stack=3)
+
+    # Ensure channels first order
+    env = VecTransposeImage(env)
 
     print(f"Created {n_envs} environments with unique seeds starting from {seed}.")
     return env
