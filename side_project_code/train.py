@@ -1,5 +1,6 @@
-# import pyglet
-# window = pyglet.window.Window(visible=False)
+import pyglet
+
+window = pyglet.window.Window(visible=False)
 
 import argparse
 import yaml
@@ -89,16 +90,27 @@ class Trainer:
         total_timesteps = self.config.get("total_timesteps", 32)
         print(f"Training for {total_timesteps} timesteps")
 
-        # Dynamic checkpoint save frequency (k)
         n_envs = self.config.get("n_envs", 1)
-        total_agent_steps = (
-            total_timesteps // n_envs
-        )  # total agent steps (not parallelized)
-        k = total_agent_steps // 20  # Default to 20 total checkpoints
+        n_steps = self.model_params.get("n_steps", 2048)  # Get n_steps from model_params
 
-        # Avoid division by zero errors
+        # Calculate total agent steps, considering parallel environments and n_steps
+        total_agent_steps = total_timesteps // (n_envs * n_steps)  # Total agent steps (not parallelized)
+
+        # Default checkpoint frequency is based on 20 steps
+        k = total_agent_steps // 20
+
         if k == 0:
-            k = total_timesteps - 1
+            # If 0, try dividing by 10
+            k = total_agent_steps // 10
+            if k == 0:
+                # If still 0, try dividing by 5
+                k = total_agent_steps // 5
+                if k == 0:
+                    # If still 0, set it to 1024
+                    k = 1024
+
+        print(f"Saving videos every {k} iterations")
+
 
         # Use k as the default checkpoint_save_freq
         checkpoint_save_freq = self.config.get("checkpoint_save_freq", k)
