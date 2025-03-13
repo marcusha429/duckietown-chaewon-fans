@@ -10,7 +10,7 @@ from .myframestack import FrameStack
 
 def make_raw_env(simulator_kwargs):
     default_kwargs = {
-        "map_name": "small_loop",
+        "map_name": "straight_road_obstacle",
         "max_steps": 250,
         "accept_start_angle_deg": 4,
         "full_transparency": True,
