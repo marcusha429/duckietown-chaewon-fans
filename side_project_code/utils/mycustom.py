@@ -6,7 +6,7 @@ import gymnasium as gym  # Gymnasium API
 import numpy as np
 from gymnasium.spaces import Box, Discrete
 from gymnasium import spaces
-from gym_duckietown.simulator import Simulator
+from gym_duckietown.simulator import Simulator, NotInLane
 
 
 def convert_space(space):
