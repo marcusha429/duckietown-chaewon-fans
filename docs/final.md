@@ -118,44 +118,36 @@ Metrics used for evaluation:
 
 ### **Basic PPO Training**  
 Initial experiments using a baseline PPO model.  
-![Basic PPO 1](gifs/basic_ppo_1.gif)  
-![Basic PPO 2](gifs/basic_ppo_2.gif)  
+<img src="gifs/basic_ppo_1.gif" width="400">  
+<img src="gifs/basic_ppo_2.gif" width="400">  
 
 ### **Framestacked PPO Training**  
 Trained in **3M and 5M timesteps** in `loop_empty` after fixing the camera resolution and adding frame stacking.  
 **3M Training:**  
-![3M Framestacked PPO](gifs/3m_loop_empty_ppo_cam_frame.gif)  
+<img src="gifs/3m_loop_empty_ppo_cam_frame.gif" width="450">  
 
 **5M Training:**  
-![5M Framestacked PPO](gifs/5m_loop_empty_ppo_cam_frame.gif)  
+<img src="gifs/5m_loop_empty_ppo_cam_frame.gif" width="450">  
 
 ### **PPO with DDPG Reward**  
 Trained in **3M and 5M timesteps** in `small_loop` after integrating the DDPG reward function.  
 **3M Training with DDPG Reward:**  
-![3M PPO DDPG](gifs/3m_loop_empty_ppo_cam_frame_DDPG.gif)  
+<img src="gifs/3m_loop_empty_ppo_cam_frame_DDPG.gif" width="450">  
 
 **5M Training with DDPG Reward:**  
-![5M PPO DDPG](gifs/5m_loop_empty_ppo_cam_frame_DDPG.gif)  
+<img src="gifs/5m_loop_empty_ppo_cam_frame_DDPG.gif" width="450">  
 
 ### **PPO with DtReward**  
 Further training in **3M and 5M timesteps** using the DtReward function for better lane-following stability.  
 **3M Training with DtReward:**  
-![3M PPO DtReward](gifs/3m_loop_empty_ppo_cam_frame_DTReward.gif)  
+<img src="gifs/3m_loop_empty_ppo_cam_frame_DTReward.gif" width="450">  
 
 **5M Training with DtReward:**  
-![5M PPO DtReward](gifs/5m_loop_empty_ppo_cam_frame_DTReward.gif)  
+<img src="gifs/5m_loop_empty_ppo_cam_frame_DTReward.gif" width="450">  
 
 ### **Latest Update: Obstacle Avoidance**  
 Applied a **basic obstacle avoidance reward** to improve real-world applicability.  
-![Obstacle Avoidance](gifs/lated_DTReward_avoid_obstacle.gif)  
-
-### **Navigation Demonstration**  
-A general demo of the DuckieBot navigating in the simulation.  
-![Navigation Demo](gifs/navigation_demo.gif)  
-
-### **Failure Case: Spinning Issue**  
-An example of instability observed during training.  
-![Spinning Issue](gifs/spinning.gif)  
+<img src="gifs/lated_DTReward_avoid_obstacle.gif" width="450">
 
 
 ## References
