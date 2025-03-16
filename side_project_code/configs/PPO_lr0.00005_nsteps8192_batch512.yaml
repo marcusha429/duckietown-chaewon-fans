@@ -1,0 +1,30 @@
+seed: 47
+n_envs: 16
+rl_algorithm: "PPO"
+model_name: "PPO_lr0.00005_nsteps8192_batch512"
+
+total_timesteps: 5000000
+
+checkpoint_save_freq: 15000
+video_save_freq: 15000
+
+simulator_params:
+  domain_rand: False
+  map_name: "small_loop"
+  max_steps: 250
+  draw_curve: False
+  draw_bbox: False
+  camera_width: 84
+  camera_height: 84
+
+model_params:
+  learning_rate: 0.00005    # Lower learning rate for more stable updates
+  n_steps: 8192            # Increased n_steps for more stable experience
+  batch_size: 512          # Larger batch size for smoother gradients
+  n_epochs: 20             # Increased epochs for better convergence
+  gamma: 0.98
+  gae_lambda: 0.95
+  clip_range: 0.1          # Decreased clip range for smaller policy updates
+  ent_coef: 0.05
+  vf_coef: 0.5
+  max_grad_norm: 0.5

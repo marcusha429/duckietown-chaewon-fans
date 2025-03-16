@@ -14,4 +14,4 @@ export PYGLET_NO_LIB=1
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 # Run the Python training script
-python3 -u train.py --config configs/myconfig.yaml
+python3 -u train.py --config configs/duckietown_lane_follower.yaml
