@@ -1,5 +1,5 @@
 seed: 47
-n_envs: 8
+n_envs: 16
 rl_algorithm: "PPO"
 model_name: "duckietown_lane_follower"
 total_timesteps: 5000000

@@ -5,13 +5,13 @@ model_name: "fast_dev_run_model"
 rl_algorithm: "PPO"
 
 # Number of vectorized, parallel environments
-n_envs: 2
+n_envs: 1
 
 # Random seed
 seed: 47
 
 # Set the number of total timesteps
-total_timesteps: 64
+total_timesteps: 4
 
 # How often to save model checkpoints during training
 # checkpoint_save_freq: 1024
@@ -23,9 +23,9 @@ total_timesteps: 64
 # #simulator_params:
 
 model_params:
-  n_steps: 32
-  batch_size: 32
-  n_epochs: 2
+  n_steps: 4
+  batch_size: 4
+  n_epochs: 1
 # --------------------------------------
 # All Duckietown simulator parameters  |
 # --------------------------------------
