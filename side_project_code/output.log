@@ -1,0 +1,796 @@
+2025-03-16 14:45:42.978958: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-03-16 14:45:42.999087: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-03-16 14:45:43.005244: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-03-16 14:45:43.020228: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-16 14:45:44.562238: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+DEBUG:commons:version: 6.2.4 *
+DEBUG:typing:version: 6.2.3
+DEBUG:duckietown_world:duckietown-world version 6.4.3 path /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages
+DEBUG:geometry:PyGeometry-z6 version 2.1.5 path /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages
+DEBUG:aido_schemas:aido-protocols version 6.1.1 path /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages
+DEBUG:nodes:version 6.2.17 path /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages pyparsing 3.2.1
+DEBUG:gym-duckietown:gym-duckietown version 6.1.34 path /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages
+
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+INFO:duckietown_world: data: /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:loading mesh 'duckiebot' from file_path '/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/meshes/duckiebot/duckiebot.obj'
+DEBUG:gym-duckietown:loading materials from /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/meshes/duckiebot/duckiebot.mtl
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/meshes/duckiebot/circlegrid-square.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/meshes/duckiebot/duckie.png
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/curve_left/texture.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/straight/texture.jpg
+DEBUG:gym-duckietown:loading texture: /data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/textures/tiles-processed/photos/asphalt/texture.jpg
+INFO:gym-duckietown:Starting at [0.89015366 0.         0.36814663] 3.1950709068321608
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+INFO:gym-duckietown:Starting at [1.38678777 0.         0.97583958] 1.6056254744849634
+DEBUG:gym-duckietown:No tile found at [1.76090396 0.         0.47308177] (3, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.76090396 0.         0.47308177]
+DEBUG:gym-duckietown:l_pos: [1.79109841 0.         0.56578855]
+DEBUG:gym-duckietown:r_pos: [1.73070952 0.         0.380375  ]
+DEBUG:gym-duckietown:f_pos: [1.64965584 0.         0.50931511]
+DEBUG:gym-duckietown:No tile found at [ 1.3427895   0.         -0.06519145] (2, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.35124076 0.         0.03194158]
+DEBUG:gym-duckietown:l_pos: [ 1.3427895   0.         -0.06519145]
+DEBUG:gym-duckietown:r_pos: [1.35969202 0.         0.12907461]
+DEBUG:gym-duckietown:f_pos: [1.4678004  0.         0.02180007]
+DEBUG:gym-duckietown:No tile found at [1.7848057  0.         0.23468531] (3, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.7264865  0.         0.31282059]
+DEBUG:gym-duckietown:l_pos: [1.7848057  0.         0.23468531]
+DEBUG:gym-duckietown:r_pos: [1.6681673  0.         0.39095586]
+DEBUG:gym-duckietown:f_pos: [1.82024883 0.         0.38280363]
+DEBUG:gym-duckietown:No tile found at [1.79893392 0.         0.2060524 ] (3, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.70757241 0.         0.17200355]
+DEBUG:gym-duckietown:l_pos: [1.79893392 0.         0.2060524 ]
+DEBUG:gym-duckietown:r_pos: [1.61621089 0.         0.13795471]
+DEBUG:gym-duckietown:f_pos: [1.66671379 0.         0.28163737]
+DEBUG:gym-duckietown:No tile found at [1.76097085 0.         0.44966534] (3, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.76097085 0.         0.44966534]
+DEBUG:gym-duckietown:l_pos: [1.71222182 0.         0.53410338]
+DEBUG:gym-duckietown:r_pos: [1.80971988 0.         0.3652273 ]
+DEBUG:gym-duckietown:f_pos: [1.65964521 0.         0.3911665 ]
+DEBUG:gym-duckietown:No tile found at [1.7552506  0.         0.16183887] (3, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.7552506  0.         0.16183887]
+DEBUG:gym-duckietown:l_pos: [1.75163481 0.         0.2592718 ]
+DEBUG:gym-duckietown:r_pos: [1.75886639 0.         0.06440594]
+DEBUG:gym-duckietown:f_pos: [1.63833108 0.         0.15749993]
+DEBUG:gym-duckietown:No tile found at [ 1.54422166  0.         -0.04021736] (2, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.48794121 0.         0.03939898]
+DEBUG:gym-duckietown:l_pos: [1.43166076 0.         0.11901532]
+DEBUG:gym-duckietown:r_pos: [ 1.54422166  0.         -0.04021736]
+DEBUG:gym-duckietown:f_pos: [ 1.3924016   0.         -0.02813756]
+DEBUG:gym-duckietown:No tile found at [ 1.4639246  0.        -0.0105802] (2, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.49790476 0.         0.10137671]
+DEBUG:gym-duckietown:l_pos: [1.40460734 0.         0.12969351]
+DEBUG:gym-duckietown:r_pos: [1.59120218 0.         0.07305991]
+DEBUG:gym-duckietown:f_pos: [ 1.4639246  0.        -0.0105802]
+INFO:gym-duckietown:Starting at [1.56017646 0.         0.32037528] 2.1208903227885396
+DEBUG:gym-duckietown:No tile found at [ 0.44567591  0.         -0.01189138] (0, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [ 0.44567591  0.         -0.01189138]
+DEBUG:gym-duckietown:l_pos: [0.50119246 0.         0.06825949]
+DEBUG:gym-duckietown:r_pos: [ 0.39015936  0.         -0.09204225]
+DEBUG:gym-duckietown:f_pos: [0.34949486 0.         0.05472848]
+INFO:gym-duckietown:Starting at [0.14967922 0.         0.23316861] 0.869872079138931
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:No tile found at [-0.0452623   0.          0.90601732] (-1, 1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.04437982 0.         0.86766968]
+DEBUG:gym-duckietown:l_pos: [0.13402194 0.         0.82932205]
+DEBUG:gym-duckietown:r_pos: [-0.0452623   0.          0.90601732]
+DEBUG:gym-duckietown:f_pos: [0.09039698 0.         0.97524023]
+INFO:gym-duckietown:Starting at [0.30982869 0.         0.67349109] 4.6837722729676825
+/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/gymnasium/wrappers/rendering.py:283: UserWarning: [33mWARN: Overwriting existing videos at /data/class/cs175/bobarshm/duckietown/side_project_code/videos/fast_dev_run_model folder (try specifying a different `video_folder` for the `RecordVideo` wrapper if this is not desired)[0m
+  logger.warn(
+DEBUG:gym-duckietown:No tile found at [-0.00828151  0.          0.46429081] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [-0.00828151  0.          0.46429081]
+DEBUG:gym-duckietown:l_pos: [0.03009524 0.         0.37466116]
+DEBUG:gym-duckietown:r_pos: [-0.04665827  0.          0.55392047]
+DEBUG:gym-duckietown:f_pos: [0.09927407 0.         0.51034292]
+DEBUG:gym-duckietown:No tile found at [-0.08498532  0.          0.44778069] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.01240224 0.         0.44309938]
+DEBUG:gym-duckietown:l_pos: [0.10978979 0.         0.43841808]
+DEBUG:gym-duckietown:r_pos: [-0.08498532  0.          0.44778069]
+DEBUG:gym-duckietown:f_pos: [0.0180198  0.         0.55996445]
+DEBUG:gym-duckietown:No tile found at [ 0.17983086  0.         -0.07048504] (0, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.15583376 0.         0.04402757]
+DEBUG:gym-duckietown:l_pos: [0.06040658 0.         0.02402999]
+DEBUG:gym-duckietown:r_pos: [0.25126094 0.         0.06402516]
+DEBUG:gym-duckietown:f_pos: [ 0.17983086  0.         -0.07048504]
+DEBUG:gym-duckietown:[0.61443152 0.         0.60840382] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f117c1b72b0>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.50176593 0.         0.57685281]
+DEBUG:gym-duckietown:l_pos: [0.52805844 0.         0.48296483]
+DEBUG:gym-duckietown:r_pos: [0.47547342 0.         0.6707408 ]
+DEBUG:gym-duckietown:f_pos: [0.61443152 0.         0.60840382]
+DEBUG:gym-duckietown:No tile found at [-0.02248964  0.          0.31000342] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.03300934 0.         0.22984039]
+DEBUG:gym-duckietown:l_pos: [0.08850833 0.         0.14967735]
+DEBUG:gym-duckietown:r_pos: [-0.02248964  0.          0.31000342]
+DEBUG:gym-duckietown:f_pos: [0.12920499 0.         0.29643917]
+DEBUG:gym-duckietown:No tile found at [-0.05454039  0.          0.21908161] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.02608063 0.         0.16425004]
+DEBUG:gym-duckietown:l_pos: [0.10670165 0.         0.10941848]
+DEBUG:gym-duckietown:r_pos: [-0.05454039  0.          0.21908161]
+DEBUG:gym-duckietown:f_pos: [0.09187851 0.         0.26099527]
+DEBUG:gym-duckietown:No tile found at [-0.0778775   0.          0.13887998] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.01915204 0.         0.12931345]
+DEBUG:gym-duckietown:l_pos: [-0.0778775   0.          0.13887998]
+DEBUG:gym-duckietown:r_pos: [0.11618158 0.         0.11974691]
+DEBUG:gym-duckietown:f_pos: [0.0076722 0.        0.012878 ]
+DEBUG:gym-duckietown:No tile found at [-0.00576049  0.          0.38863729] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.11123735 0.         0.38934904]
+DEBUG:gym-duckietown:l_pos: [0.11064422 0.         0.48684724]
+DEBUG:gym-duckietown:r_pos: [0.11183048 0.         0.29185085]
+DEBUG:gym-duckietown:f_pos: [-0.00576049  0.          0.38863729]
+DEBUG:gym-duckietown:No tile found at [-0.01857593  0.          0.28690524] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.05729125 0.         0.22566455]
+DEBUG:gym-duckietown:l_pos: [-0.01857593  0.          0.28690524]
+DEBUG:gym-duckietown:r_pos: [0.13315843 0.         0.16442387]
+DEBUG:gym-duckietown:f_pos: [-0.01619757  0.          0.13462394]
+DEBUG:gym-duckietown:No tile found at [-0.0485092   0.          0.22367839] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.06741663 0.         0.20786057]
+DEBUG:gym-duckietown:l_pos: [0.08059814 0.         0.30446543]
+DEBUG:gym-duckietown:r_pos: [0.05423512 0.         0.11125572]
+DEBUG:gym-duckietown:f_pos: [-0.0485092   0.          0.22367839]
+DEBUG:gym-duckietown:No tile found at [-0.07444683  0.          0.45160731] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.02216075 0.         0.4384458 ]
+DEBUG:gym-duckietown:l_pos: [0.11876833 0.         0.4252843 ]
+DEBUG:gym-duckietown:r_pos: [-0.07444683  0.          0.45160731]
+DEBUG:gym-duckietown:f_pos: [0.03795456 0.         0.5543749 ]
+DEBUG:gym-duckietown:No tile found at [-0.06215775  0.          0.45571317] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.03182767 0.         0.42977112]
+DEBUG:gym-duckietown:l_pos: [-0.06215775  0.          0.45571317]
+DEBUG:gym-duckietown:r_pos: [0.1258131  0.         0.40382907]
+DEBUG:gym-duckietown:f_pos: [0.00069721 0.         0.31698861]
+DEBUG:gym-duckietown:No tile found at [-0.0043321   0.          0.28327627] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.09332198 0.         0.21883497]
+DEBUG:gym-duckietown:l_pos: [0.14702306 0.         0.30021336]
+DEBUG:gym-duckietown:r_pos: [0.03962089 0.         0.13745657]
+DEBUG:gym-duckietown:f_pos: [-0.0043321   0.          0.28327627]
+DEBUG:gym-duckietown:No tile found at [-0.00087628  0.          0.04813526] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.08054041 0.         0.10177826]
+DEBUG:gym-duckietown:l_pos: [0.16195711 0.         0.15542126]
+DEBUG:gym-duckietown:r_pos: [-0.00087628  0.          0.04813526]
+DEBUG:gym-duckietown:f_pos: [0.01616881 0.         0.19947829]
+INFO:gym-duckietown:Starting at [0.20942541 0.         0.40783542] 4.456399099542049
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:No tile found at [0.47373815 0.         1.76398783] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.56454199 0.         1.72847849]
+DEBUG:gym-duckietown:l_pos: [0.65534583 0.         1.69296916]
+DEBUG:gym-duckietown:r_pos: [0.47373815 0.         1.76398783]
+DEBUG:gym-duckietown:f_pos: [0.60715319 0.         1.8374431 ]
+DEBUG:gym-duckietown:No tile found at [-0.01529129  0.          1.2441253 ] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.09244741 0.         1.19850323]
+DEBUG:gym-duckietown:l_pos: [0.1304658  0.         1.28828548]
+DEBUG:gym-duckietown:r_pos: [0.05442902 0.         1.10872098]
+DEBUG:gym-duckietown:f_pos: [-0.01529129  0.          1.2441253 ]
+DEBUG:gym-duckietown:No tile found at [-0.04941859  0.          1.55950781] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.01495395 0.         1.6327364 ]
+DEBUG:gym-duckietown:l_pos: [-0.04941859  0.          1.55950781]
+DEBUG:gym-duckietown:r_pos: [0.07932648 0.         1.705965  ]
+DEBUG:gym-duckietown:f_pos: [0.10282826 0.         1.55548936]
+DEBUG:gym-duckietown:No tile found at [0.18907863 0.         1.80633229] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.14757813 0.         1.71810554]
+DEBUG:gym-duckietown:l_pos: [0.18907863 0.         1.80633229]
+DEBUG:gym-duckietown:r_pos: [0.10607763 0.         1.6298788 ]
+DEBUG:gym-duckietown:f_pos: [0.04170604 0.         1.76790615]
+DEBUG:gym-duckietown:No tile found at [0.12316823 0.         1.80415552] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.19955804 0.         1.74356801]
+DEBUG:gym-duckietown:l_pos: [0.12316823 0.         1.80415552]
+DEBUG:gym-duckietown:r_pos: [0.27594785 0.         1.68298049]
+DEBUG:gym-duckietown:f_pos: [0.12685302 0.         1.65190024]
+DEBUG:gym-duckietown:No tile found at [-6.17616963e-04  0.00000000e+00  1.35920346e+00] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [-6.17616963e-04  0.00000000e+00  1.35920346e+00]
+DEBUG:gym-duckietown:l_pos: [-0.09681067  0.          1.34329288]
+DEBUG:gym-duckietown:r_pos: [0.09557544 0.         1.37511405]
+DEBUG:gym-duckietown:f_pos: [0.01847508 0.         1.2437718 ]
+DEBUG:gym-duckietown:No tile found at [0.31073025 0.         1.80073905] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.31027811 0.         1.68373992]
+DEBUG:gym-duckietown:l_pos: [0.40777738 0.         1.68336313]
+DEBUG:gym-duckietown:r_pos: [0.21277883 0.         1.6841167 ]
+DEBUG:gym-duckietown:f_pos: [0.31073025 0.         1.80073905]
+DEBUG:gym-duckietown:No tile found at [-0.07897763  0.          1.26616566] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.01727868 0.         1.28168892]
+DEBUG:gym-duckietown:l_pos: [0.113535   0.         1.29721218]
+DEBUG:gym-duckietown:r_pos: [-0.07897763  0.          1.26616566]
+DEBUG:gym-duckietown:f_pos: [-1.34922774e-03  0.00000000e+00  1.39719650e+00]
+DEBUG:gym-duckietown:No tile found at [0.47452611 0.         1.78145131] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.40065672 0.         1.71781512]
+DEBUG:gym-duckietown:l_pos: [0.47452611 0.         1.78145131]
+DEBUG:gym-duckietown:r_pos: [0.32678734 0.         1.65417894]
+DEBUG:gym-duckietown:f_pos: [0.3242933  0.         1.80645838]
+DEBUG:gym-duckietown:No tile found at [0.42696839 0.         1.79830204] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.50911682 0.         1.74578647]
+DEBUG:gym-duckietown:l_pos: [0.42696839 0.         1.79830204]
+DEBUG:gym-duckietown:r_pos: [0.59126525 0.         1.69327089]
+DEBUG:gym-duckietown:f_pos: [0.44609813 0.         1.64720835]
+INFO:gym-duckietown:Starting at [0.48891398 0.         1.51664506] 6.154536041547727
+/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/gymnasium/wrappers/rendering.py:283: UserWarning: [33mWARN: Overwriting existing videos at /data/class/cs175/bobarshm/duckietown/side_project_code/videos/fast_dev_run_model folder (try specifying a different `video_folder` for the `RecordVideo` wrapper if this is not desired)[0m
+  logger.warn(
+DEBUG:gym-duckietown:[0.80256824 0.         1.15389226] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f117c1b7d30>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.7904128  0.         1.25063157]
+DEBUG:gym-duckietown:l_pos: [0.77825736 0.         1.34737089]
+DEBUG:gym-duckietown:r_pos: [0.80256824 0.         1.15389226]
+DEBUG:gym-duckietown:f_pos: [0.67432562 0.         1.23604505]
+DEBUG:gym-duckietown:[1.03612264 0.         1.13501039] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f117c1b7d30>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.02814512 0.         1.25173811]
+DEBUG:gym-duckietown:l_pos: [0.93087203 0.         1.24509017]
+DEBUG:gym-duckietown:r_pos: [1.12541822 0.         1.25838604]
+DEBUG:gym-duckietown:f_pos: [1.03612264 0.         1.13501039]
+INFO:gym-duckietown:Starting at [0.6670862  0.         1.50335946] 3.1340496243096165
+DEBUG:gym-duckietown:No tile found at [0.57801237 0.         1.75517462] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.0
+DEBUG:gym-duckietown:pos: [0.55665539 0.         1.66774534]
+DEBUG:gym-duckietown:l_pos: [0.62951313 0.         1.64994786]
+DEBUG:gym-duckietown:r_pos: [0.48379766 0.         1.68554281]
+DEBUG:gym-duckietown:f_pos: [0.57801237 0.         1.75517462]
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:No tile found at [1.79058552 0.         0.65451663] (3, 1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.67531524 0.         0.63447263]
+DEBUG:gym-duckietown:l_pos: [1.69201857 0.         0.53841406]
+DEBUG:gym-duckietown:r_pos: [1.65861191 0.         0.73053119]
+DEBUG:gym-duckietown:f_pos: [1.79058552 0.         0.65451663]
+DEBUG:gym-duckietown:[1.13984443 0.         1.07323473] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144516aa0>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.22290217 0.         1.1243    ]
+DEBUG:gym-duckietown:l_pos: [1.30595991 0.         1.17536527]
+DEBUG:gym-duckietown:r_pos: [1.13984443 0.         1.07323473]
+DEBUG:gym-duckietown:f_pos: [1.16162385 0.         1.22396929]
+INFO:gym-duckietown:Starting at [1.53461955 0.         1.00652073] 1.5750029898362743
+DEBUG:gym-duckietown:No tile found at [1.79141064 0.         0.22434291] (3, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.69505016 0.         0.20947995]
+DEBUG:gym-duckietown:l_pos: [1.59868968 0.         0.19461699]
+DEBUG:gym-duckietown:r_pos: [1.79141064 0.         0.22434291]
+DEBUG:gym-duckietown:f_pos: [1.71288571 0.         0.09384737]
+INFO:gym-duckietown:Starting at [1.43714983 0.         0.45435089] 5.152827498440001
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:No tile found at [-0.03771539  0.          0.53982089] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.02245841 0.         0.46310476]
+DEBUG:gym-duckietown:l_pos: [0.0826322  0.         0.38638863]
+DEBUG:gym-duckietown:r_pos: [-0.03771539  0.          0.53982089]
+DEBUG:gym-duckietown:f_pos: [0.11451776 0.         0.53531332]
+DEBUG:gym-duckietown:No tile found at [ 0.07755168  0.         -0.01347956] (0, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.13905624 0.         0.06217386]
+DEBUG:gym-duckietown:l_pos: [ 0.07755168  0.         -0.01347956]
+DEBUG:gym-duckietown:r_pos: [0.2005608  0.         0.13782727]
+DEBUG:gym-duckietown:f_pos: [ 0.22984033  0.         -0.01163162]
+DEBUG:gym-duckietown:No tile found at [-0.06625971  0.          0.10622217] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.03101912 0.         0.11278566]
+DEBUG:gym-duckietown:l_pos: [-0.06625971  0.          0.10622217]
+DEBUG:gym-duckietown:r_pos: [0.12829795 0.         0.11934915]
+DEBUG:gym-duckietown:f_pos: [ 0.0388953   0.         -0.00394894]
+DEBUG:gym-duckietown:No tile found at [-0.00620813  0.          0.47963896] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.03936604 0.         0.39344589]
+DEBUG:gym-duckietown:l_pos: [0.08494021 0.         0.30725282]
+DEBUG:gym-duckietown:r_pos: [-0.00620813  0.          0.47963896]
+DEBUG:gym-duckietown:f_pos: [0.14279772 0.         0.4481349 ]
+DEBUG:gym-duckietown:No tile found at [ 0.30116838  0.         -0.02209827] (0, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.37987783 0.         0.03544366]
+DEBUG:gym-duckietown:l_pos: [0.45858727 0.         0.09298558]
+DEBUG:gym-duckietown:r_pos: [ 0.30116838  0.         -0.02209827]
+DEBUG:gym-duckietown:f_pos: [0.31082752 0.         0.12989499]
+DEBUG:gym-duckietown:[0.62732822 0.         0.63197063] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144560b20>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.55639443 0.         0.56507783]
+DEBUG:gym-duckietown:l_pos: [0.48546063 0.         0.49818504]
+DEBUG:gym-duckietown:r_pos: [0.62732822 0.         0.63197063]
+DEBUG:gym-duckietown:f_pos: [0.63666578 0.         0.47995727]
+DEBUG:gym-duckietown:No tile found at [-0.0231216   0.          0.38382133] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [-0.0231216   0.          0.38382133]
+DEBUG:gym-duckietown:l_pos: [-0.04457231  0.          0.28871025]
+DEBUG:gym-duckietown:r_pos: [-0.00167088  0.          0.47893241]
+DEBUG:gym-duckietown:f_pos: [0.09101169 0.         0.35808047]
+DEBUG:gym-duckietown:[0.62077911 0.         0.61470053] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144560b20>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.53824456 0.         0.53177256]
+DEBUG:gym-duckietown:l_pos: [0.60735121 0.         0.46299377]
+DEBUG:gym-duckietown:r_pos: [0.46913792 0.         0.60055135]
+DEBUG:gym-duckietown:f_pos: [0.62077911 0.         0.61470053]
+DEBUG:gym-duckietown:No tile found at [-0.01010698  0.          0.31858035] (-1, 0)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.03754007 0.         0.40364508]
+DEBUG:gym-duckietown:l_pos: [-0.01010698  0.          0.31858035]
+DEBUG:gym-duckietown:r_pos: [0.08518711 0.         0.48870982]
+DEBUG:gym-duckietown:f_pos: [0.13961775 0.         0.34646863]
+DEBUG:gym-duckietown:No tile found at [ 0.34761987  0.         -0.07134496] (0, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.3587514  0.         0.04512431]
+DEBUG:gym-duckietown:l_pos: [0.26169369 0.         0.05440058]
+DEBUG:gym-duckietown:r_pos: [0.45580912 0.         0.03584803]
+DEBUG:gym-duckietown:f_pos: [ 0.34761987  0.         -0.07134496]
+DEBUG:gym-duckietown:No tile found at [ 0.35675108  0.         -0.0155584 ] (0, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [ 0.35675108  0.         -0.0155584 ]
+DEBUG:gym-duckietown:l_pos: [ 0.43294029  0.         -0.07639798]
+DEBUG:gym-duckietown:r_pos: [0.28056187 0.         0.04528117]
+DEBUG:gym-duckietown:f_pos: [0.42975857 0.         0.07586865]
+INFO:gym-duckietown:Starting at [0.57141068 0.         0.3385332 ] 6.279905282588862
+DEBUG:gym-duckietown:No tile found at [1.80684373 0.         1.65475063] (3, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.71310493 0.         1.68157016]
+DEBUG:gym-duckietown:l_pos: [1.80684373 0.         1.65475063]
+DEBUG:gym-duckietown:r_pos: [1.61936613 0.         1.70838968]
+DEBUG:gym-duckietown:f_pos: [1.74528836 0.         1.79405672]
+INFO:gym-duckietown:Starting at [1.52938959 0.         1.63384881] 3.71366807384357
+DEBUG:gym-duckietown:No tile found at [1.46570646 0.         1.75676448] (2, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.0
+DEBUG:gym-duckietown:pos: [1.50221211 0.         1.67450065]
+DEBUG:gym-duckietown:l_pos: [1.5707653  0.         1.70492202]
+DEBUG:gym-duckietown:r_pos: [1.43365891 0.         1.64407928]
+DEBUG:gym-duckietown:f_pos: [1.46570646 0.         1.75676448]
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:No tile found at [0.83152021 0.         1.84573312] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.84042834 0.         1.74864092]
+DEBUG:gym-duckietown:l_pos: [0.83152021 0.         1.84573312]
+DEBUG:gym-duckietown:r_pos: [0.84933647 0.         1.65154872]
+DEBUG:gym-duckietown:f_pos: [0.7239177  0.         1.73795117]
+DEBUG:gym-duckietown:[0.86994336 0.         1.15327264] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144561420>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.86994336 0.         1.15327264]
+DEBUG:gym-duckietown:l_pos: [0.96706455 0.         1.16185896]
+DEBUG:gym-duckietown:r_pos: [0.77282217 0.         1.14468633]
+DEBUG:gym-duckietown:f_pos: [0.85963978 0.         1.26981807]
+DEBUG:gym-duckietown:No tile found at [0.90917017 0.         1.80631138] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.86146938 0.         1.72127678]
+DEBUG:gym-duckietown:l_pos: [0.90917017 0.         1.80631138]
+DEBUG:gym-duckietown:r_pos: [0.81376858 0.         1.63624217]
+DEBUG:gym-duckietown:f_pos: [0.75942785 0.         1.77851773]
+DEBUG:gym-duckietown:No tile found at [0.97323782 0.         1.81430508] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.96089177 0.         1.71758991]
+DEBUG:gym-duckietown:l_pos: [0.97323782 0.         1.81430508]
+DEBUG:gym-duckietown:r_pos: [0.94854573 0.         1.62087473]
+DEBUG:gym-duckietown:f_pos: [0.84483356 0.         1.73240516]
+DEBUG:gym-duckietown:[1.08515255 0.         1.15291104] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144561420>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.08515255 0.         1.15291104]
+DEBUG:gym-duckietown:l_pos: [1.18252504 0.         1.14792637]
+DEBUG:gym-duckietown:r_pos: [0.98778005 0.         1.15789572]
+DEBUG:gym-duckietown:f_pos: [1.09113416 0.         1.26975804]
+DEBUG:gym-duckietown:[0.69841535 0.         1.09079318] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144561420>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.7360071  0.         1.20158966]
+DEBUG:gym-duckietown:l_pos: [0.6436767  0.         1.23291612]
+DEBUG:gym-duckietown:r_pos: [0.8283375 0.        1.1702632]
+DEBUG:gym-duckietown:f_pos: [0.69841535 0.         1.09079318]
+DEBUG:gym-duckietown:No tile found at [0.89179727 0.         1.7880152 ] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.90318043 0.         1.67157026]
+DEBUG:gym-duckietown:l_pos: [1.00021788 0.         1.68105623]
+DEBUG:gym-duckietown:r_pos: [0.80614298 0.         1.6620843 ]
+DEBUG:gym-duckietown:f_pos: [0.89179727 0.         1.7880152 ]
+DEBUG:gym-duckietown:[0.99930494 0.         1.11455764] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144561420>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.01211806 0.         1.21121204]
+DEBUG:gym-duckietown:l_pos: [0.99930494 0.         1.11455764]
+DEBUG:gym-duckietown:r_pos: [1.02493118 0.         1.30786645]
+DEBUG:gym-duckietown:f_pos: [1.12810334 0.         1.1958363 ]
+DEBUG:gym-duckietown:No tile found at [0.76928059 0.         1.75651657] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.68067096 0.         1.71583999]
+DEBUG:gym-duckietown:l_pos: [0.59206133 0.         1.67516342]
+DEBUG:gym-duckietown:r_pos: [0.76928059 0.         1.75651657]
+DEBUG:gym-duckietown:f_pos: [0.72948285 0.         1.60950844]
+DEBUG:gym-duckietown:[0.9112116 0.        1.1377779] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144561420>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.92609126 0.         1.25382787]
+DEBUG:gym-duckietown:l_pos: [0.82938296 0.         1.26622758]
+DEBUG:gym-duckietown:r_pos: [1.02279957 0.         1.24142815]
+DEBUG:gym-duckietown:f_pos: [0.9112116 0.        1.1377779]
+DEBUG:gym-duckietown:No tile found at [0.7301835  0.         1.84565592] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.7086697  0.         1.75055909]
+DEBUG:gym-duckietown:l_pos: [0.6871559  0.         1.65546226]
+DEBUG:gym-duckietown:r_pos: [0.7301835  0.         1.84565592]
+DEBUG:gym-duckietown:f_pos: [0.82278589 0.         1.72474253]
+DEBUG:gym-duckietown:[1.02556093 0.         1.09153351] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144561420>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.99858421 0.         1.20538103]
+DEBUG:gym-duckietown:l_pos: [0.90371128 0.         1.18290043]
+DEBUG:gym-duckietown:r_pos: [1.09345714 0.         1.22786162]
+DEBUG:gym-duckietown:f_pos: [1.02556093 0.         1.09153351]
+DEBUG:gym-duckietown:No tile found at [1.13135478 0.         1.81868006] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.10213266 0.         1.72566222]
+DEBUG:gym-duckietown:l_pos: [1.07291054 0.         1.63264439]
+DEBUG:gym-duckietown:r_pos: [1.13135478 0.         1.81868006]
+DEBUG:gym-duckietown:f_pos: [1.21375406 0.         1.69059568]
+DEBUG:gym-duckietown:No tile found at [0.92046477 0.         1.76586352] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.92046477 0.         1.76586352]
+DEBUG:gym-duckietown:l_pos: [0.84051975 0.         1.71005096]
+DEBUG:gym-duckietown:r_pos: [1.0004098  0.         1.82167609]
+DEBUG:gym-duckietown:f_pos: [0.98743986 0.         1.66992949]
+DEBUG:gym-duckietown:No tile found at [0.63148036 0.         1.75659261] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.58746044 0.         1.6695955 ]
+DEBUG:gym-duckietown:l_pos: [0.54344051 0.         1.5825984 ]
+DEBUG:gym-duckietown:r_pos: [0.63148036 0.         1.75659261]
+DEBUG:gym-duckietown:f_pos: [0.69185696 0.         1.61677159]
+DEBUG:gym-duckietown:No tile found at [0.58388951 0.         1.82126502] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.60500138 0.         1.70618553]
+DEBUG:gym-duckietown:l_pos: [0.70090095 0.         1.72377875]
+DEBUG:gym-duckietown:r_pos: [0.5091018 0.        1.6885923]
+DEBUG:gym-duckietown:f_pos: [0.58388951 0.         1.82126502]
+INFO:gym-duckietown:Starting at [0.82527907 0.         1.46077027] 3.1563016741214382
+DEBUG:gym-duckietown:No tile found at [ 0.83636104  0.         -0.01908003] (1, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.87005602 0.         0.07241259]
+DEBUG:gym-duckietown:l_pos: [ 0.83636104  0.         -0.01908003]
+DEBUG:gym-duckietown:r_pos: [0.903751  0.        0.1639052]
+DEBUG:gym-duckietown:f_pos: [0.97984716 0.         0.03197862]
+DEBUG:gym-duckietown:[1.15048545 0.         0.59979077] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144517e20>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.15130192 0.         0.48279362]
+DEBUG:gym-duckietown:l_pos: [1.24879954 0.         0.48347401]
+DEBUG:gym-duckietown:r_pos: [1.05380429 0.         0.48211324]
+DEBUG:gym-duckietown:f_pos: [1.15048545 0.         0.59979077]
+DEBUG:gym-duckietown:No tile found at [ 0.70405612  0.         -0.00639987] (1, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.80105845 0.         0.00343871]
+DEBUG:gym-duckietown:l_pos: [0.89806078 0.         0.0132773 ]
+DEBUG:gym-duckietown:r_pos: [ 0.70405612  0.         -0.00639987]
+DEBUG:gym-duckietown:f_pos: [0.78925215 0.         0.11984151]
+DEBUG:gym-duckietown:[0.78074203 0.         0.62774351] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144517e20>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.72434122 0.         0.54821239]
+DEBUG:gym-duckietown:l_pos: [0.78074203 0.         0.62774351]
+DEBUG:gym-duckietown:r_pos: [0.66794041 0.         0.46868127]
+DEBUG:gym-duckietown:f_pos: [0.62890388 0.         0.61589335]
+DEBUG:gym-duckietown:[0.87714365 0.         0.63993012] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144517e20>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.86843697 0.         0.52325453]
+DEBUG:gym-duckietown:l_pos: [0.96566663 0.         0.51599896]
+DEBUG:gym-duckietown:r_pos: [0.77120731 0.         0.53051009]
+DEBUG:gym-duckietown:f_pos: [0.87714365 0.         0.63993012]
+DEBUG:gym-duckietown:No tile found at [ 8.71245075e-01  0.00000000e+00 -2.37004129e-04] (1, -1)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.89140717 0.         0.09515555]
+DEBUG:gym-duckietown:l_pos: [ 8.71245075e-01  0.00000000e+00 -2.37004129e-04]
+DEBUG:gym-duckietown:r_pos: [0.91156927 0.         0.19054811]
+DEBUG:gym-duckietown:f_pos: [1.00587824 0.         0.07096103]
+DEBUG:gym-duckietown:[0.90067226 0.         0.60697222] corresponds to tile at (1, 1) which is not drivable: {'coords': (1, 1), 'kind': 'asphalt', 'angle': 1, 'drivable': False, 'texture': <gym_duckietown.graphics.Texture object at 0x7f1144517e20>, 'color': array([1, 1, 1, 1])}
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.95685056 0.         0.52728377]
+DEBUG:gym-duckietown:l_pos: [0.90067226 0.         0.60697222]
+DEBUG:gym-duckietown:r_pos: [1.01302887 0.         0.44759532]
+DEBUG:gym-duckietown:f_pos: [0.86122443 0.         0.45986981]
+INFO:gym-duckietown:Starting at [0.65895346 0.         0.41763601] 3.206378860753731
+INFO:gym-duckietown:Information about the graphics card:
+ pyglet_version: 1.5.27
+    information: dict[4]
+                 │ vendor: Mesa
+                 │ renderer: llvmpipe (LLVM 17.0.6, 256 bits)
+                 │ version: 4.5 (Compatibility Profile) Mesa 23.1.4
+                 │ shading-language-version: 4.50
+  nvidia_around: False
+DEBUG:gym-duckietown:loading map file "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/duckietown_world/data/gd1/maps/small_loop.yaml"
+INFO:gym-duckietown:done
+DEBUG:gym-duckietown:No tile found at [0.3776951  0.         1.77847348] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.37234805 0.         1.68112021]
+DEBUG:gym-duckietown:l_pos: [0.3776951  0.         1.77847348]
+DEBUG:gym-duckietown:r_pos: [0.36700101 0.         1.58376694]
+DEBUG:gym-duckietown:f_pos: [0.25552413 0.         1.68753666]
+DEBUG:gym-duckietown:No tile found at [-0.01365896  0.          1.54171405] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.01113286 0.         1.63600942]
+DEBUG:gym-duckietown:l_pos: [-0.01365896  0.          1.54171405]
+DEBUG:gym-duckietown:r_pos: [0.03592467 0.         1.73030478]
+DEBUG:gym-duckietown:f_pos: [0.12428729 0.         1.60625924]
+DEBUG:gym-duckietown:No tile found at [0.03757485 0.         1.76567554] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.03757485 0.         1.76567554]
+DEBUG:gym-duckietown:l_pos: [-0.04321395  0.          1.71109146]
+DEBUG:gym-duckietown:r_pos: [0.11836364 0.         1.82025961]
+DEBUG:gym-duckietown:f_pos: [0.10307573 0.         1.66872898]
+DEBUG:gym-duckietown:No tile found at [-0.00339578  0.          1.67151604] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.09367157 0.         1.680691  ]
+DEBUG:gym-duckietown:l_pos: [-0.00339578  0.          1.67151604]
+DEBUG:gym-duckietown:r_pos: [0.19073891 0.         1.68986597]
+DEBUG:gym-duckietown:f_pos: [0.10468153 0.         1.56421019]
+DEBUG:gym-duckietown:No tile found at [0.29378171 0.         1.75839862] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.35536741 0.         1.68281124]
+DEBUG:gym-duckietown:l_pos: [0.4169531  0.         1.60722386]
+DEBUG:gym-duckietown:r_pos: [0.29378171 0.         1.75839862]
+DEBUG:gym-duckietown:f_pos: [0.44607226 0.         1.75671408]
+DEBUG:gym-duckietown:No tile found at [0.48633449 0.         1.80342447] (0, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.52698421 0.         1.71480252]
+DEBUG:gym-duckietown:l_pos: [0.56763392 0.         1.62618057]
+DEBUG:gym-duckietown:r_pos: [0.48633449 0.         1.80342447]
+DEBUG:gym-duckietown:f_pos: [0.63333055 0.         1.76358218]
+DEBUG:gym-duckietown:No tile found at [-0.00868445  0.          1.7033275 ] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.08850883 0.         1.69559991]
+DEBUG:gym-duckietown:l_pos: [0.18570211 0.         1.68787233]
+DEBUG:gym-duckietown:r_pos: [-0.00868445  0.          1.7033275 ]
+DEBUG:gym-duckietown:f_pos: [0.09778193 0.         1.81223186]
+DEBUG:gym-duckietown:No tile found at [-0.02074969  0.          1.42688442] (-1, 2)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.09609794 0.         1.43285362]
+DEBUG:gym-duckietown:l_pos: [0.09112361 0.         1.53022665]
+DEBUG:gym-duckietown:r_pos: [0.10107228 0.         1.3354806 ]
+DEBUG:gym-duckietown:f_pos: [-0.02074969  0.          1.42688442]
+INFO:gym-duckietown:Starting at [0.53142276 0.         1.54856565] 3.075289111690733
+DEBUG:gym-duckietown:No tile found at [0.63031276 0.         1.76690375] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [0.61090806 0.         1.65152413]
+DEBUG:gym-duckietown:l_pos: [0.70705774 0.         1.63535354]
+DEBUG:gym-duckietown:r_pos: [0.51475837 0.         1.66769471]
+DEBUG:gym-duckietown:f_pos: [0.63031276 0.         1.76690375]
+DEBUG:gym-duckietown:No tile found at [1.0349249  0.         1.78991858] (1, 3)
+DEBUG:gym-duckietown:Invalid pose. Collision free: True On drivable area: False
+DEBUG:gym-duckietown:safety_factor: 1.3
+DEBUG:gym-duckietown:pos: [1.09828237 0.         1.71581001]
+DEBUG:gym-duckietown:l_pos: [1.0349249  0.         1.78991858]
+DEBUG:gym-duckietown:r_pos: [1.16163985 0.         1.64170144]
+DEBUG:gym-duckietown:f_pos: [1.00935208 0.         1.63978104]
+INFO:gym-duckietown:Starting at [0.81905471 0.         1.42633752] 3.1870263291737015
+{'audio': ('xaudio2', 'directsound', 'openal', 'pulse', 'silent'), 'debug_font': False, 'debug_gl': True, 'debug_gl_trace': False, 'debug_gl_trace_args': False, 'debug_graphics_batch': False, 'debug_lib': False, 'debug_media': False, 'debug_texture': False, 'debug_trace': False, 'debug_trace_args': False, 'debug_trace_depth': 1, 'debug_trace_flush': True, 'debug_win32': False, 'debug_x11': False, 'graphics_vbo': True, 'shadow_window': True, 'vsync': None, 'xsync': True, 'xlib_fullscreen_override_redirect': False, 'darwin_cocoa': True, 'search_local_libs': True, 'advanced_font_features': False, 'headless': False, 'headless_device': 0, 'win32_disable_shaping': False}
+Duckietown Simulator arguments: {}
+Initialized environment
+Applied Gymnasium wrapper
+Initialized environment
+Applied Gymnasium wrapper
+Created 2 environments with unique seeds starting from 47.
+Observation space after stacking: Box(0, 255, (9, 84, 84), uint8)
+Created 2 environments with seed 47 and simulator arguments: {}
+Creating PPO model with seed 47 and model arguments: {'n_steps': 32, 'batch_size': 32, 'n_epochs': 2, 'seed': 47}
+Training for 64 timesteps
+video callback called!
+Initialized environment
+Applied Gymnasium wrapper
+Recording video at step 1!
+Initialized environment
+Applied Gymnasium wrapper
+Recording video at step 2!
+Initialized environment
+Applied Gymnasium wrapper
+Recording video at step 3!
+Initialized environment
+Applied Gymnasium wrapper
+Recording video at step 4!
+Initialized environment
+Applied Gymnasium wrapper
+Recording video at step 5!
+Initialized environment
+Applied Gymnasium wrapper
+Recording video at step 6!
+Traceback (most recent call last):
+  File "/data/class/cs175/bobarshm/duckietown/side_project_code/train.py", line 129, in <module>
+    main()
+  File "/data/class/cs175/bobarshm/duckietown/side_project_code/train.py", line 125, in main
+    trainer.train()
+  File "/data/class/cs175/bobarshm/duckietown/side_project_code/train.py", line 96, in train
+    self.model.learn(
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/stable_baselines3/ppo/ppo.py", line 311, in learn
+    return super().learn(
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 323, in learn
+    continue_training = self.collect_rollouts(self.env, callback, self.rollout_buffer, n_rollout_steps=self.n_steps)
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 224, in collect_rollouts
+    if not callback.on_step():
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/stable_baselines3/common/callbacks.py", line 114, in on_step
+    return self._on_step()
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/stable_baselines3/common/callbacks.py", line 223, in _on_step
+    continue_training = callback.on_step() and continue_training
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/stable_baselines3/common/callbacks.py", line 114, in on_step
+    return self._on_step()
+  File "/data/class/cs175/bobarshm/duckietown/side_project_code/utils/callbacks.py", line 63, in _on_step
+    self.env.close()
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/gymnasium/wrappers/rendering.py", line 380, in close
+    self.stop_recording()
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/gymnasium/wrappers/rendering.py", line 407, in stop_recording
+    clip.write_videofile(path, logger=moviepy_logger)
+  File "<decorator-gen-69>", line 2, in write_videofile
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/moviepy/decorators.py", line 54, in requires_duration
+    return f(clip, *a, **k)
+  File "<decorator-gen-68>", line 2, in write_videofile
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/moviepy/decorators.py", line 135, in use_clip_fps_by_default
+    return f(clip, *new_a, **new_kw)
+  File "<decorator-gen-67>", line 2, in write_videofile
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/moviepy/decorators.py", line 22, in convert_masks_to_RGB
+    return f(clip, *a, **k)
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/moviepy/video/VideoClip.py", line 300, in write_videofile
+    ffmpeg_write_video(self, filename, fps, codec,
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/moviepy/video/io/ffmpeg_writer.py", line 228, in ffmpeg_write_video
+    writer.write_frame(frame)
+  File "/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/moviepy/video/io/ffmpeg_writer.py", line 136, in write_frame
+    self.proc.stdin.write(img_array.tobytes())
+KeyboardInterrupt
+/data/class/cs175/bobarshm/data/homezvol0/bobarshm/.conda/envs/duckietown/lib/python3.10/site-packages/gymnasium/wrappers/rendering.py:416: UserWarning: [33mWARN: Unable to save last video! Did you call close()?[0m
