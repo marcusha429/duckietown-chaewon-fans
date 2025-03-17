@@ -50,17 +50,22 @@ class Trainer:
             **self.model_params,
         )
 
+    import os
+
     def load_or_create_model(self):
         model_name = self.config.get("model_name", "duckietown_model")
-        model_path = f"./model_artifacts/{model_name}"
+        model_path = (
+            f"./model_artifacts/{model_name}/{model_name}.zip"
+        )
         rl_algorithm = self.config.get("rl_algorithm", "PPO").upper()
 
-        if os.path.exists(model_path + ".zip"):
-            print(f"Loading existing \"{rl_algorithm}\" model from {model_path}")
+        if os.path.exists(model_path):
+            print(f'Loading existing "{rl_algorithm}" model from {model_path}')
             model_class = PPO if rl_algorithm == "PPO" else SAC
             model = model_class.load(model_path, env=self.env)
         else:
             model = self.create_model()
+
         return model
 
     def train(self):
@@ -70,10 +75,10 @@ class Trainer:
 
         # Dynamic checkpoint save frequency (k)
         n_envs = self.config.get("n_envs", 1)
-        total_agent_steps = (
-            total_timesteps // n_envs
-        )
-        k = total_agent_steps // 20  # Default to 20 total checkpoints during the training
+        total_agent_steps = total_timesteps // n_envs
+        k = (
+            total_agent_steps // 20
+        )  # Default to 20 total checkpoints during the training
 
         checkpoint_save_freq = self.config.get("checkpoint_save_freq", k)
         video_save_freq = self.config.get("video_save_freq", k)
