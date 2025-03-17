@@ -49,7 +49,6 @@ class DuckietownGymnasiumWrapper(gym.Env):
         self.prev_pos = None
 
     def _compute_dt_reward(self, observation, action, info):
-
         unwrapped = self.env.unwrapped
 
         cur_pos = getattr(unwrapped, "cur_pos", None)
@@ -58,7 +57,7 @@ class DuckietownGymnasiumWrapper(gym.Env):
         if cur_pos is None or cur_angle is None:
             return 0  # Fallback
 
-        my_reward = -1000
+        my_reward = -1000  # Severe penalty for reversing
         prev_pos = self.prev_pos
         self.prev_pos = cur_pos.copy() if cur_pos is not None else None
 
@@ -83,6 +82,12 @@ class DuckietownGymnasiumWrapper(gym.Env):
         lane_center_dist_reward = np.interp(abs(lane_pos.dist), (0, 0.05), (1, 0))
         lane_center_angle_reward = np.interp(abs(lane_pos.angle_deg), (0, 180), (1, -1))
 
+        # Check if reversing (both left and right engine values are negative)
+        left_engine, right_engine = action
+        if left_engine < 0 and right_engine < 0:
+            # Apply severe penalty for reversing
+            return -25
+        
         # Final reward calculation
         reward = 100 * dist + lane_center_dist_reward + lane_center_angle_reward
         return reward
