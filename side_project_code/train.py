@@ -94,7 +94,7 @@ class Trainer:
         video_callback = VideoRecordingCallback(
             simulator_kwargs=self.simulator_kwargs,
             video_folder=f"videos/{model_name}",
-            video_length=1000,
+            video_length=2000,
             save_freq=video_save_freq,
         )
 

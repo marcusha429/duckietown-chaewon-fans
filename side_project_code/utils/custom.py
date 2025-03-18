@@ -70,6 +70,16 @@ class DuckietownGymnasiumWrapper(gym.Env):
         except NotInLane:
             return my_reward
 
+        proximity = info.get('proximity_distance', 1.0)  # Get distance to nearest obstacle
+
+        # Allow driving close (e.g., <0.1 meters) but penalize heavily if collision is imminent
+        if proximity < 0.05:  # Extremely close threshold (5cm)
+            my_reward = -200  # Severe penalty for critical proximity
+            return my_reward
+        elif proximity < 0.1:  # Close but safe(ish) distance
+            my_reward = -50    # Mild penalty to nudge avoidance
+            return my_reward
+
         # Calculate progress
         curve_point, _ = unwrapped.closest_curve_point(cur_pos, cur_angle)
         prev_curve_point, _ = unwrapped.closest_curve_point(prev_pos, cur_angle)
@@ -88,8 +98,11 @@ class DuckietownGymnasiumWrapper(gym.Env):
             # Apply severe penalty for reversing
             return -25
 
+        obstacle_penalty = info.get('proximity_penalty', 0) * 2
+        collision_penalty = -500 if info.get('collision', False) else 0
+
         # Final reward calculation
-        reward = 100 * dist + lane_center_dist_reward + lane_center_angle_reward
+        reward = 100*dist + lane_center_dist_reward*2 + lane_center_angle_reward*2 + obstacle_penalty + collision_penalty
         return reward
 
     def step(self, action):

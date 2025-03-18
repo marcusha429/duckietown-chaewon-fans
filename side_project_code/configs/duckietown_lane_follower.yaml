@@ -1,15 +1,11 @@
 seed: 47
-n_envs: 16
+n_envs: 8
 rl_algorithm: "PPO"
 model_name: "duckietown_lane_follower"
 total_timesteps: 5000000
 
-checkpoint_save_freq: 15000
-video_save_freq: 15000
-
 simulator_params:
   domain_rand: False
-  map_name: "small_loop"
   max_steps: 250
   draw_curve: False
   draw_bbox: False
