@@ -87,7 +87,7 @@ class DuckietownGymnasiumWrapper(gym.Env):
         if left_engine < 0 and right_engine < 0:
             # Apply severe penalty for reversing
             return -25
-        
+
         # Final reward calculation
         reward = 100 * dist + lane_center_dist_reward + lane_center_angle_reward
         return reward

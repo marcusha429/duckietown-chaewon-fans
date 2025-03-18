@@ -45,7 +45,6 @@ def make_envs(n_envs: int = 4, simulator_kwargs={}, seed: int = 47):
     ]
     env = DummyVecEnv(env_fns)
     env = VecMonitor(env)
-    
 
     print(f"Created {n_envs} environments with unique seeds starting from {seed}.")
     print(f"Observation space after stacking: {env.observation_space}")
