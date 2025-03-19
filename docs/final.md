@@ -7,7 +7,7 @@ title: Final Report
 
 Embedded video of our project can be found below:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PZG3GnKm9Tc" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YHD0_4aIGVs" frameborder="0" allowfullscreen></iframe>
 
 The video includes a brief problem description using images, screenshots, or screen captures, along with examples of a simple policy (e.g., random) and our best-performing approach. The video is under three minutes, recorded in at least 720p resolution, and contains comprehensible speech where applicable.
 
