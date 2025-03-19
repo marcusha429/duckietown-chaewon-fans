@@ -54,12 +54,32 @@ Through extensive experimentation, we determined that **Proximal Policy Optimiza
   - Uses a **CNN-based policy** to process image-based inputs.  
   - Modified input to **84×84 resolution with a 3-frame stack** for improved temporal awareness.  
 
-- **Hyperparameters:**  
-  - **Learning rate:** `3e-4`  
-  - **Steps per rollout:** `1024`  
-  - **Discount factor (γ):** `0.99`  
-  - **GAE Lambda:** `0.95`  
-  - **Entropy coefficient:** `0.01`  
+- **Model Parameters**
+  - **Learning Rate:** `3e-4`
+  - **Steps per Rollout (N Steps):** `1024`
+  - **Batch Size:** `256`
+  - **N Epochs:** `10`
+  - **Gamma (Discount Factor):** `0.99`
+  - **GAE Lambda:** `0.95`
+  - **Clip Range:** `0.3`
+  - **Entropy Coefficient (ent_coef):** `0.01`
+  - **Value Function Coefficient (vf_coef):** `0.5`
+  - **Max Gradient Norm:** `0.5`
+
+- **Simulator Parameters**
+  - **Domain Randomization:** `False`
+  - **Max Steps per Episode:** `250`
+  - **Draw Curve:** `False`
+  - **Draw Bounding Box:** `False`
+  - **Camera Width:** `84`
+  - **Camera Height:** `84`
+
+- **Training Configuration**
+  - **Seed:** `47`
+  - **Number of Environments:** `8`
+  - **Reinforcement Learning Algorithm:**  
+    - `Stable Baseline 3 PPO`
+  - **Total Timesteps:** `5,000,000`
 
 - **Training Details:**  
   - **Basic PPO Training:** Initial experiments using a baseline PPO model.  
@@ -68,6 +88,27 @@ Through extensive experimentation, we determined that **Proximal Policy Optimiza
   - **PPO with DtReward:** Further training in **3M and 5M timesteps** using the DtReward function for better lane-following stability.  
   - **Latest Update:** Applied a **basic obstacle avoidance reward** to improve real-world applicability.  
 
+## Custom Reward Function
+- **Encouraging Forward Motion:**  
+  - The agent is rewarded for moving forward in a stable manner.  
+  - Prevents the vehicle from spinning in place or getting stuck.  
+
+- **Penalizing Lane Deviations:**  
+  - Negative rewards are applied when the vehicle moves out of its lane.  
+  - Encourages alignment with the center of the lane to improve navigation.  
+
+- **Minimizing Collisions:**  
+  - A heavy penalty is assigned when the vehicle collides with obstacles.  
+  - Ensures the model learns to avoid objects and drive cautiously.  
+
+- **Discouraging Reverse Driving:**  
+  - A slight penalty is given when the agent moves in reverse unnecessarily.  
+  - Reinforces forward driving as the optimal strategy.  
+
+- **Lane-Centric Corrections:**  
+  - The agent receives feedback based on lane-center distance and angle.  
+  - Helps refine turning and smooth lane-following behavior.
+  
 ### Process and Iterative Improvements  
 
 Initially, we worked individually to set up simulations and train models using both SAC and PPO. However, as our experiments progressed, we observed **better results with PPO**, leading us to focus on refining that approach.  
