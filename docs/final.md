@@ -149,7 +149,7 @@ Metrics used for evaluation:
 
 **Performance Charts:**
 <br>  
-<img src="image/duckietown_logs.png" width="400">
+<img src="image/duckietown_logs.png" width="650">
 <br>  
 This model is frame-stacked, uses the specified hyperparameters, and is trained for 6 million timesteps on the small loop map in Duckietown before transitioning to the more sophisticated loop_empty map. The results show a sudden drop in rewards around 6 million timesteps, which occurs because the model's reward dynamics change when it is trained on the new map. After this drop, the model recovers and achieves higher rewards, successfully adapting to the new environment. This figure demonstrates how we took a model trained on a small loop map, transferred it to the larger, more complex loop_empty map, and the model successfully adapted and transferred its learning.
 
