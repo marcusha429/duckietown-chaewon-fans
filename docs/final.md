@@ -3,7 +3,7 @@ layout: default
 title: Final Report
 ---
 
-## Video (TODO: Make New Video)
+## Video
 
 Embedded video of our project can be found below:
 
