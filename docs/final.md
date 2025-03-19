@@ -148,10 +148,17 @@ Metrics used for evaluation:
 - **Mean Episode Length (`ep_len_mean`)**: Shorter episodes indicate frequent collisions.
 
 **Performance Charts:**
+### PPO Lane Following Model
 <br>  
 <img src="image/duckietown_logs.png" width="650">
 <br>  
 This model is frame-stacked, uses the specified hyperparameters, and is trained for 6 million timesteps on the small loop map in Duckietown before transitioning to the more sophisticated loop_empty map. The results show a sudden drop in rewards around 6 million timesteps, which occurs because the model's reward dynamics change when it is trained on the new map. After this drop, the model recovers and achieves higher rewards, successfully adapting to the new environment. This figure demonstrates how we took a model trained on a small loop map, transferred it to the larger, more complex loop_empty map, and the model successfully adapted and transferred its learning.
+
+### SAC Unsuccessfull Attempt
+<br>  
+<img src="image/sac_unsuccessfull.png" width="650">
+<br>  
+This new TensorBoard plot shows two graphs: one for the mean episode length (ep len mean) and one for the mean episode reward (ep rew mean). It compares two implementations of the SAC model: 1) Vanilla SAC and 2) Vanilla SAC with rewards clipped to the range (-1, 1). Both models are frame-stacked with a history of 3 frames and use an updated reward function (penalizing reversing and lane centering). The plots reveal that SAC performed poorly on Duckietown, showing instability and failing to accumulate enough rewards. Clipping the rewards diminished their effectiveness, as it truncated valuable information, while the unclipped SAC showed slow learning. Ultimately, due to these issues, we decided to focus on PPO instead.
 
 
 ### Qualitative Evaluation
