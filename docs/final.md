@@ -148,6 +148,17 @@ Metrics used for evaluation:
 - **Mean Episode Length (`ep_len_mean`)**: Shorter episodes indicate frequent collisions.
 
 **Performance Charts:**
+
+### PPO Experimentation - Early Phases: Testing the Waters!
+<br>  
+<img src="image/PPO_experimentation_len.png" width="650">
+<br>  
+<br>  
+<img src="image/PPO_experimentation_rewards.png" width="650">
+<br>  
+In the beginning, absolutely nothing worked. In our early experiments with PPO, we trained several models by adjusting various factors, including the model's policy architecture, using the vanilla implementation with Duckietown's native wrappers, and experimenting with different image sizes. We applied a reward model that provided positive rewards while clipping very negative rewards to a reasonable value to prevent the Duckiebot from becoming "stale." Additionally, we used an action wrapper to reduce turning speeds and tested with a 64x64 image size instead of the standard 84x84. While these experiments were introductory and did not go very far in terms of results, they were crucial for exploring our search space and understanding the nuances of Duckietown. They significantly contributed to the development of our lane-following model, allowing us to better train and optimize it for achieving higher rewards.
+
+
 ### PPO Lane Following Model
 <br>  
 <img src="image/duckietown_logs.png" width="650">
@@ -159,7 +170,6 @@ This model is frame-stacked, uses the specified hyperparameters, and is trained 
 <img src="image/sac_unsuccessfull.png" width="650">
 <br>  
 This new TensorBoard plot shows two graphs: one for the mean episode length (ep len mean) and one for the mean episode reward (ep rew mean). It compares two implementations of the SAC model: 1) Vanilla SAC and 2) Vanilla SAC with rewards clipped to the range (-1, 1). Both models are frame-stacked with a history of 3 frames and use an updated reward function (penalizing reversing and lane centering). The plots reveal that SAC performed poorly on Duckietown, showing instability and failing to accumulate enough rewards. Clipping the rewards diminished their effectiveness, as it truncated valuable information, while the unclipped SAC showed slow learning. Ultimately, due to these issues, we decided to focus on PPO instead.
-
 
 ### Qualitative Evaluation
 - **Visual Inspection**: Reviewing recorded runs to assess lane-following behavior.
