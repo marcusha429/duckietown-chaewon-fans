@@ -148,7 +148,7 @@ Further training in **3M and 5M timesteps** using the DtReward function for bett
 ### **Latest Update: Obstacle Avoidance**  
 Applied a **basic obstacle avoidance reward** to improve real-world applicability.  
 <img src="gifs/lated_DTReward_avoid_obstacle.gif" width="450">
-
+<img src="gifs/result.gif" width="450">
 
 ## References
 
@@ -166,7 +166,7 @@ Applied a **basic obstacle avoidance reward** to improve real-world applicabilit
 ### Papers and Documentation
 - [Duckietown MBRL Documentation](https://www.alihkw.com/duckietown-mbrl-lib/)
 - [Duckietown Simulation Guide](https://docs.duckietown.com/ente/devmanual-software/intermediate/simulation/index.html#simulator-running-headless)
-- [DDPG Reward System](https://github.com/marton12050/T.T-duckietown)
+- [Reward System](https://github.com/marton12050/T.T-duckietown)
 
 ## AI Tool Usage
 We used AI tools in the following ways:
