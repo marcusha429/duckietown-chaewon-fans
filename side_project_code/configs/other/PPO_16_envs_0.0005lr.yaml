@@ -1,0 +1,109 @@
+# Name of the model
+model_name: "PPO_0.0005lr"
+
+# Specify the reinforcement learning algorithm (PPO or SAC)
+rl_algorithm: "PPO"
+
+# Number of vectorized, parallel environments
+n_envs: 16
+
+# Set the number of total timesteps
+total_timesteps: 3000000
+
+# Set the seed
+seed: 47
+
+# Parameters to the duckietown simulator (See defaults in utils/env.py)
+#simulator_params:
+
+model_params:
+  learning_rate: 0.0005
+
+# --------------------------------------
+# All Duckietown simulator parameters  |
+# --------------------------------------
+# map_name: str = DEFAULT_MAP_NAME,
+# max_steps: int = DEFAULT_MAX_STEPS,
+# draw_curve: bool = False,
+# draw_bbox: bool = False,
+# domain_rand: bool = True,
+# frame_rate: float = DEFAULT_FRAMERATE,
+# frame_skip: bool = DEFAULT_FRAME_SKIP,
+# camera_width: int = DEFAULT_CAMERA_WIDTH,
+# camera_height: int = DEFAULT_CAMERA_HEIGHT,
+# robot_speed: float = DEFAULT_ROBOT_SPEED,
+# accept_start_angle_deg: int = DEFAULT_ACCEPT_START_ANGLE_DEG,
+# full_transparency: bool = False,
+# user_tile_start: Any | None = None,
+# seed: int = None,
+# distortion: bool = False,
+# dynamics_rand: bool = False,
+# camera_rand: bool = False,
+# randomize_maps_on_reset: bool = False,
+# num_tris_distractors: int = 12,
+# color_ground: Sequence[float] = (0.15, 0.15, 0.15),
+# color_sky: Sequence[float] = BLUE_SKY,
+# style: str = "photos",
+# enable_leds: bool = False
+
+# -----------------------------
+# All PPO model parameters    |
+# -----------------------------
+
+# policy: str | type[ActorCriticPolicy],
+# env: GymEnv | str,
+# learning_rate: float | Schedule = 0.0003,
+# n_steps: int = 2048,
+# batch_size: int = 64,
+# n_epochs: int = 10,
+# gamma: float = 0.99,
+# gae_lambda: float = 0.95,
+# clip_range: float | Schedule = 0.2,
+# clip_range_vf: float | Schedule | None = None,
+# normalize_advantage: bool = True,
+# ent_coef: float = 0,
+# vf_coef: float = 0.5,
+# max_grad_norm: float = 0.5,
+# use_sde: bool = False,
+# sde_sample_freq: int = -1,
+# rollout_buffer_class: type[RolloutBuffer] | None = None,
+# rollout_buffer_kwargs: dict[str, Any] | None = None,
+# target_kl: float | None = None,
+# stats_window_size: int = 100,
+# tensorboard_log: str | None = None,
+# policy_kwargs: dict[str, Any] | None = None,
+# verbose: int = 0,
+# seed: int | None = None,
+# device: device | str = "auto",
+# _init_setup_model: bool = True
+#
+# -----------------------------
+# All SAC model parameters    |
+# -----------------------------
+# policy: str | type[SACPolicy],
+# env: GymEnv | str,
+# learning_rate: float | Schedule = 0.0003,
+# buffer_size: int = 1000000,
+# learning_starts: int = 100,
+# batch_size: int = 256,
+# tau: float = 0.005,
+# gamma: float = 0.99,
+# train_freq: int | tuple[int, str] = 1,
+# gradient_steps: int = 1,
+# action_noise: ActionNoise | None = None,
+# replay_buffer_class: type[ReplayBuffer] | None = None,
+# replay_buffer_kwargs: dict[str, Any] | None = None,
+# optimize_memory_usage: bool = False,
+# ent_coef: str | float = "auto",
+# target_update_interval: int = 1,
+# target_entropy: str | float = "auto",
+# use_sde: bool = False,
+# sde_sample_freq: int = -1,
+# use_sde_at_warmup: bool = False,
+# stats_window_size: int = 100,
+# tensorboard_log: str | None = None,
+# policy_kwargs: dict[str, Any] | None = None,
+# verbose: int = 0,
+# seed: int | None = None,
+# device: device | str = "auto",
+# _init_setup_model: bool = True

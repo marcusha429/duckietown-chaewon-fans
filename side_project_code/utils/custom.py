@@ -5,8 +5,8 @@ import gym as old_gym  # Original gym used by Duckietown
 import gymnasium as gym  # Gymnasium API
 import numpy as np
 from gymnasium.spaces import Box, Discrete
-
-from gym_duckietown.simulator import Simulator
+from gymnasium import spaces
+from gym_duckietown.simulator import Simulator, NotInLane
 
 
 def convert_space(space):
@@ -33,23 +33,9 @@ def convert_space(space):
 
 
 class DuckietownGymnasiumWrapper(gym.Env):
-    """
-    A Gymnasium-compatible wrapper for the Duckietown simulator.
-
-    This wrapper adapts the original Gym-based Simulator to the Gymnasium API,
-    converting spaces and modifying step/reset methods. It also renames the
-    `compute_reward` method (if present) to avoid false detection as a GoalEnv.
-    """
-
     metadata = {"render_modes": ["human", "rgb_array", "top_down", "free_cam"]}
 
     def __init__(self, env):
-        """
-        Initialize the wrapper with an existing Duckietown simulator instance.
-
-        Args:
-            env: An instance of gym_duckietown.simulator.Simulator
-        """
         super().__init__()
         self.env = env
         # Set the render mode of the environment (important to recording videos of agent using RecordVideo wrapper)
@@ -59,15 +45,67 @@ class DuckietownGymnasiumWrapper(gym.Env):
         self.action_space = convert_space(self.env.action_space)
         self.observation_space = convert_space(self.env.observation_space)
 
-    def step(self, action):
-        """
-        Run one timestep of the environment's dynamics.
+        self.use_dt_reward = True
+        self.prev_pos = None
 
-        Adapts the original Gym API (observation, reward, done, info) to the
-        Gymnasium API: (observation, reward, terminated, truncated, info).
-        """
-        # terminated = done  # Standard Gym-to-Gymnasium conversion
-        # return observation, reward, terminated, truncated, info
+    def _compute_dt_reward(self, observation, action, info):
+        unwrapped = self.env.unwrapped
+
+        cur_pos = getattr(unwrapped, "cur_pos", None)
+        cur_angle = getattr(unwrapped, "cur_angle", None)
+
+        if cur_pos is None or cur_angle is None:
+            return 0  # Fallback
+
+        my_reward = -1000  # Severe penalty for reversing
+        prev_pos = self.prev_pos
+        self.prev_pos = cur_pos.copy() if cur_pos is not None else None
+
+        if prev_pos is None:
+            return 0  # First step
+
+        try:
+            # Get lane position
+            lane_pos = unwrapped.get_lane_pos2(cur_pos, cur_angle)
+        except NotInLane:
+            return my_reward
+
+        proximity = info.get('proximity_distance', 1.0)  # Get distance to nearest obstacle
+
+        # Allow driving close (e.g., <0.1 meters) but penalize heavily if collision is imminent
+        if proximity < 0.05:  # Extremely close threshold (5cm)
+            my_reward = -200  # Severe penalty for critical proximity
+            return my_reward
+        elif proximity < 0.1:  # Close but safe(ish) distance
+            my_reward = -50    # Mild penalty to nudge avoidance
+            return my_reward
+
+        # Calculate progress
+        curve_point, _ = unwrapped.closest_curve_point(cur_pos, cur_angle)
+        prev_curve_point, _ = unwrapped.closest_curve_point(prev_pos, cur_angle)
+        if curve_point is None or prev_curve_point is None:
+            return 0
+
+        dist = np.linalg.norm(curve_point - prev_curve_point)
+
+        # Reward components
+        lane_center_dist_reward = np.interp(abs(lane_pos.dist), (0, 0.05), (1, 0))
+        lane_center_angle_reward = np.interp(abs(lane_pos.angle_deg), (0, 180), (1, -1))
+
+        # Check if reversing (both left and right engine values are negative)
+        left_engine, right_engine = action
+        if left_engine < 0 and right_engine < 0:
+            # Apply severe penalty for reversing
+            return -25
+
+        obstacle_penalty = info.get('proximity_penalty', 0) * 2
+        collision_penalty = -500 if info.get('collision', False) else 0
+
+        # Final reward calculation
+        reward = 100*dist + lane_center_dist_reward*2 + lane_center_angle_reward*2 + obstacle_penalty + collision_penalty
+        return reward
+
+    def step(self, action):
         step_result = self.env.step(action)
 
         # If the environment returns only 4 values, add `truncated=False`
@@ -78,20 +116,21 @@ class DuckietownGymnasiumWrapper(gym.Env):
             raise ValueError(f"Unexpected step return value length: {len(step_result)}")
 
         terminated = done  # Rename `done` to `terminated` for Gymnasium compatibility
+
+        # Calculate DDPG-style reward if enabled
+        if self.use_dt_reward:
+            dt_reward = self._compute_dt_reward(observation, action, info)
+            if dt_reward is not None:
+                reward = dt_reward
+
         return observation, reward, terminated, truncated, info
 
     def reset(self, *, seed=None, options=None):
-        """
-        Reset the environment to an initial state.
-
-        Returns:
-            A tuple (observation, info)
-        """
         # Attempt to bypass intermediate wrappers by calling unwrapped.reset()
         try:
             observation = self.env.unwrapped.reset()
         except AttributeError:
-            # Fallback if unwrapped isn’t available
+            # Fallback if unwrapped isn't available
             observation = self.env.reset()
 
         return observation, {}
@@ -114,4 +153,4 @@ class DuckietownGymnasiumWrapper(gym.Env):
         """
         Return the base (unwrapped) simulator.
         """
-        return self.env
+        return self.env.unwrapped if hasattr(self.env, "unwrapped") else self.env
